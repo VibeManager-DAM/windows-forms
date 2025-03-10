@@ -1,0 +1,89 @@
+﻿<Window x:Class="VibeManager.Pages.Exit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VibeManager.Pages"
+        mc:Ignorable="d"
+        Title="Confirmació de Sortida"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Height="150" Width="300">
+
+    <Window.Resources>
+        <!-- Estilo adaptado a la paleta -->
+        <Style x:Key="FuturisticButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#39514F"/>
+            <Setter Property="Foreground" Value="#E8E7E1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#D8E1CC"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#D8E1CC" BlurRadius="10" ShadowDepth="0"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="20"
+                        Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Cambia color al pasar el ratón -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#03201D"/>
+                                <Setter Property="BorderBrush" Value="#39514F"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect Color="#39514F" BlurRadius="15" ShadowDepth="0"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <!-- Cambia color al hacer clic -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#D8E1CC"/>
+                                <Setter Property="BorderBrush" Value="#03201D"/>
+                                <Setter Property="Foreground" Value="#03201D"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <!-- Fondo semi-transparente con la paleta -->
+        <Border Background="#AA03201D" CornerRadius="10" Padding="20">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <!-- Título -->
+                <TextBlock Text="Do you want to exit?" 
+                       FontSize="16" FontWeight="Bold" Foreground="#D8E1CC" 
+                       TextAlignment="Center" Margin="0,10,0,10"/>
+
+                <!-- Botones -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                    <Button Content="Yes" Width="90" Height="40" Margin="5"
+        Style="{StaticResource FuturisticButtonStyle}"
+        Click="ConfirmExit"/>
+                    <Button Content="No" Width="90" Height="40" Margin="5"
+        Style="{StaticResource FuturisticButtonStyle}"
+        Click="CancelExit"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

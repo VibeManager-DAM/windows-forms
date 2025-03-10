@@ -5,8 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VibeManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="675" Width="1200"
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="Transparent" Icon="/Resources/icon_wbg.ico">
+
+    <Border CornerRadius="10" BorderThickness="3" Opacity="0.95">
+
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#39514F" Offset="0"/>
+                <GradientStop Color="#D8E1CC" Offset="0.75"/>
+                <GradientStop Color="#03201D" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStop Color="#D8E1CC" Offset="0"/>
+                <GradientStop Color="#E8E7E1" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <!-- Fila para la barra de título -->
+                <RowDefinition Height="*"/>
+                <!-- Resto del espacio disponible -->
+            </Grid.RowDefinitions>
+
+            <!-- Barra de título -->
+            <Border Grid.Row="0" CornerRadius="10,10,0,0"  Background="#03201D">
+                <Grid MouseDown="DockPanel_MouseDown">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Vibe Manager" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" />
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Click="MinimizeWindow" Width="30" Background="Transparent" BorderBrush="Transparent">
+                            <TextBlock Text="➖" FontSize="16" Foreground="White" VerticalAlignment="Center" TextAlignment="Center"/>
+                        </Button>
+                        <Button Click="ShutdownWindow" Width="30" Background="Transparent" BorderBrush="Transparent">
+                            <TextBlock Text="❌" FontSize="16" Foreground="White" VerticalAlignment="Center" TextAlignment="Center"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="1">
+                <ContentControl Content="{Binding CurrentView}"/>
+            </Grid>
+            
+        </Grid>
+
+    </Border>
+    
 </Window>

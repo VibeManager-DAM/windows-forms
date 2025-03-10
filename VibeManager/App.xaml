@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:VibeManager"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Importar el diccionario de templates -->
+                <ResourceDictionary Source="/ViewModels/DataTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
