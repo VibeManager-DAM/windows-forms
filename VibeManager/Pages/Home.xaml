@@ -1,13 +1,55 @@
 ﻿<UserControl x:Class="VibeManager.Pages.Home"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:VibeManager.Pages"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
-        <TextBlock Text="¡Bienvenido al Dashboard!" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" />
-    </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/> <!-- Barra de navegación con ancho dinámico -->
+            <ColumnDefinition Width="*"/>   <!-- Contenido dinámico -->
+        </Grid.ColumnDefinitions>
 
+        <!-- Menú lateral -->
+        <Border Background="#2C3E50" Width="{Binding SidebarWidth}" Height="Auto">
+            <StackPanel>
+                <!-- Botón de menú para expandir/colapsar -->
+                <Button Click="ToggleMenu" Background="Transparent" BorderThickness="0" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="☰" FontSize="20" Foreground="White" />
+                        <TextBlock Text=" Menú" Foreground="White" Visibility="{Binding MenuTextVisibility}" />
+                    </StackPanel>
+                </Button>
+
+                <!-- Botones del menú -->
+                <Button Command="{Binding ShowDashboardCommand}" Background="Transparent" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🏠" FontSize="16" Foreground="White" />
+                        <TextBlock Text=" Dashboard" Foreground="White" Visibility="{Binding MenuTextVisibility}" />
+                    </StackPanel>
+                </Button>
+
+                <Button Command="{Binding ShowUsersCommand}" Background="Transparent" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="👤" FontSize="16" Foreground="White" />
+                        <TextBlock Text=" Users" Foreground="White" Visibility="{Binding MenuTextVisibility}" />
+                    </StackPanel>
+                </Button>
+
+                <Button Command="{Binding ShowSpacesCommand}" Background="Transparent" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="📌" FontSize="16" Foreground="White" />
+                        <TextBlock Text=" Spaces" Foreground="White" Visibility="{Binding MenuTextVisibility}" />
+                    </StackPanel>
+                </Button>
+
+                <Button Command="{Binding ShowSettingsCommand}" Background="Transparent" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="⚙" FontSize="16" Foreground="White" />
+                        <TextBlock Text=" Settings" Foreground="White" Visibility="{Binding MenuTextVisibility}" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Contenido dinámico -->
+        <ContentControl Grid.Column="1" Content="{Binding CurrentView}" />
+    </Grid>
 </UserControl>

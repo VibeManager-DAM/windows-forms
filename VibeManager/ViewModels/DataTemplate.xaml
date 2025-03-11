@@ -13,4 +13,21 @@
         <views:Home />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewmodels:DashboardVM}">
+        <views:Dashboard />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewmodels:UsersVM}">
+        <views:Users />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewmodels:SpacesVM}">
+        <views:Spaces />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewmodels:SettingsVM}">
+        <views:Settings />
+    </DataTemplate>
+
+
 </ResourceDictionary>
