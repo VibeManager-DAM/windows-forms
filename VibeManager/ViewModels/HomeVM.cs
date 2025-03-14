@@ -8,7 +8,7 @@ namespace VibeManager.ViewModels
     public class HomeVM : INotifyPropertyChanged
     {
         private object _currentView;
-        private double _sidebarWidth = 50; // Ancho inicial del menú colapsado
+        private double _sidebarWidth = 80; // Ancho inicial del menú colapsado
         private Visibility _menuTextVisibility = Visibility.Collapsed; // Ocultar texto al inicio
 
         public object CurrentView
@@ -48,14 +48,14 @@ namespace VibeManager.ViewModels
 
         private void ToggleMenu()
         {
-            if (SidebarWidth == 50)
+            if (SidebarWidth == 80)
             {
-                SidebarWidth = 200;
+                SidebarWidth = 250;
                 MenuTextVisibility = Visibility.Visible;
             }
             else
             {
-                SidebarWidth = 50;
+                SidebarWidth = 80;
                 MenuTextVisibility = Visibility.Collapsed;
             }
         }
