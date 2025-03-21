@@ -6,11 +6,75 @@
     <UserControl.DataContext>
         <vm:SettingsVM />
     </UserControl.DataContext>
-    
-    <Grid>
-        <TextBlock Text="⚙ Ajustes" FontSize="30" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center"/>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Títol "Languages" amb suport per multi-idioma -->
+        <TextBlock Text="Lenguajes"
+               FontSize="24" FontWeight="Bold"
+               Foreground="White"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="0,30,0,20"
+               FontFamily="Playfair Display" />
+
+        <!-- Grid per centrar les banderes i separar-les adequadament -->
+        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="60"/>
+                <!-- Separació fixa -->
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="60"/>
+                <!-- Separació fixa -->
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Català -->
+            <Border x:Name="BorderCatalan" Grid.Column="0" BorderThickness="3" CornerRadius="30" BorderBrush="Transparent">
+                <Image x:Name="ImgCatalan" Source="/Resources/catalan_flag.png"
+                   Width="90" Height="90"
+                   Cursor="Hand"
+                   MouseDown="SetCatalan"/>
+            </Border>
+
+            <!-- Espanyol -->
+            <Border x:Name="BorderSpanish" Grid.Column="2" BorderThickness="3" CornerRadius="30" BorderBrush="Transparent">
+                <Image x:Name="ImgSpanish" Source="/Resources/spain_flag.png"
+                   Width="90" Height="90"
+                   Cursor="Hand"
+                   MouseDown="SetSpanish"/>
+            </Border>
+
+            <!-- Anglès -->
+            <Border x:Name="BorderEnglish" Grid.Column="4" BorderThickness="3" CornerRadius="30" BorderBrush="Transparent">
+                <Image x:Name="ImgEnglish" Source="/Resources/uk_flag.png"
+                   Width="90" Height="90"
+                   Cursor="Hand"
+                   MouseDown="SetEnglish"/>
+            </Border>
+        </Grid>
+
+        <!-- Botó de Log Out -->
+        <Button Content="salir"
+            Command="{Binding LogoutCommand}"
+            Click="LogoutClicked"
+            Width="200" Height="50"
+            Background="Red"
+            Foreground="White"
+            FontSize="16"
+            FontWeight="Bold"
+            BorderBrush="Black"
+            FontFamily="Playfair Display" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Grid.Row="2"
+            Cursor="Hand"
+            Margin="0,20,0,20"/>
     </Grid>
 </UserControl>
