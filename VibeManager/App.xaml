@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <!-- Importar el diccionario de templates -->
                 <ResourceDictionary Source="/ViewModels/DataTemplate.xaml" />
+                <ResourceDictionary Source="/Languages/strings.en.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -1,0 +1,74 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- PAGES -->
+    <sys:String x:Key="Languages">Idiomes</sys:String>
+    <sys:String x:Key="SettingsTitle">Configuració</sys:String>
+    <sys:String x:Key="FAQS">Preguntes Freqüents</sys:String>
+
+    <!-- GENERAL -->
+    <sys:String x:Key="ConfirmExit">Vols sortir?</sys:String>
+    <sys:String x:Key="LogOut">Sortir</sys:String>
+    <sys:String x:Key="Yes">Sí</sys:String>
+    
+    <sys:String x:Key="Administrators">Administradors</sys:String>
+    <sys:String x:Key="Artists">Artistes</sys:String>
+    <sys:String x:Key="Spaces">Espais</sys:String>
+
+    <sys:String x:Key="Username">Usuari</sys:String>
+    <sys:String x:Key="Password">Contrasenya</sys:String>
+    <sys:String x:Key="LogIn">Inicia Sessió</sys:String>
+
+    <sys:String x:Key="Hour">Hora</sys:String>
+    <sys:String x:Key="Event">Event</sys:String>
+
+    <sys:String x:Key="Dashboard">Panell General</sys:String>
+    <sys:String x:Key="EventsToday">Events d'Avui</sys:String>
+    <sys:String x:Key="TotalSuperAdmins">SuperAdmins</sys:String>
+    <sys:String x:Key="TotalAdmins">Admins</sys:String>
+    <sys:String x:Key="TotalMaintenanceUsers">Mantenimient</sys:String>
+    <sys:String x:Key="TotalAppUsers">App</sys:String>
+    <sys:String x:Key="TotalArtists">Artistes</sys:String>
+    <sys:String x:Key="TotalSpaces">Espais</sys:String>
+    <sys:String x:Key="TotalMatches">Emparallaments</sys:String>
+    <sys:String x:Key="TotalEventsDone">Events Fets</sys:String>
+    <sys:String x:Key="UserRegistrationsperMonth">Registre d'Usuaris per Mes</sys:String>
+
+    <sys:String x:Key="Name">Nom</sys:String>
+    <sys:String x:Key="Role">Rol</sys:String>
+    <sys:String x:Key="Email">Correu</sys:String>
+    <sys:String x:Key="Save">Guardar</sys:String>
+    <sys:String x:Key="Delete">Eliminar</sys:String>
+    <sys:String x:Key="SearchUser">Buscar Usuari</sys:String>
+    <sys:String x:Key="Rating">Valoració</sys:String>
+    <sys:String x:Key="Capacity">Capacitat</sys:String>
+    <sys:String x:Key="Genre">Gènere</sys:String>
+    <sys:String x:Key="Clear">Netejar</sys:String>
+
+    <!-- FAQ TRANSLATIONS -->
+    <sys:String x:Key="Faq1Question">Com puc registrar-me com a artista?</sys:String>
+    <sys:String x:Key="Faq1Answer">Pots registrar-te a l'aplicació seleccionant el rol d’'Artista' i completant el teu perfil.</sys:String>
+
+    <sys:String x:Key="Faq2Question">Com poden els espais trobar artistes?</sys:String>
+    <sys:String x:Key="Faq2Answer">Els espais poden cercar artistes segons el gènere musical, ubicació i disponibilitat a través de la plataforma.</sys:String>
+
+    <sys:String x:Key="Faq3Question">Puc sol·licitar participar en diversos esdeveniments al mateix temps?</sys:String>
+    <sys:String x:Key="Faq3Answer">Sí, pots sol·licitar participar en múltiples esdeveniments i els espais revisaran la teva sol·licitud.</sys:String>
+
+    <sys:String x:Key="Faq4Question">Com es fan les coincidències entre artistes i espais?</sys:String>
+    <sys:String x:Key="Faq4Answer">El sistema suggereix coincidències basades en preferències, disponibilitat i valoracions prèvies.</sys:String>
+
+    <sys:String x:Key="Faq5Question">Què passa després que un artista i un espai coincideixin?</sys:String>
+    <sys:String x:Key="Faq5Answer">Un cop confirmada la coincidència, es genera un contracte i es defineixen detalls com l’horari i el pagament.</sys:String>
+
+    <sys:String x:Key="Faq6Question">Puc valorar un esdeveniment o un artista?</sys:String>
+    <sys:String x:Key="Faq6Answer">Sí, tant els artistes com els espais poden deixar valoracions després d’un esdeveniment per fomentar la confiança a la plataforma.</sys:String>
+
+    <sys:String x:Key="Faq7Question">Com puc informar d'un problema o disputa?</sys:String>
+    <sys:String x:Key="Faq7Answer">Pots informar d’un problema a través de la secció ‘Suport’ de l’aplicació, on un administrador revisarà el teu cas.</sys:String>
+
+    <sys:String x:Key="Faq8Question">Hi ha una manera de comunicar-me amb els espais o els artistes?</sys:String>
+    <sys:String x:Key="Faq8Answer">Sí, pots xatejar amb espais o artistes mitjançant el sistema de missatgeria de l'aplicació un cop establerta una coincidència.</sys:String>
+
+</ResourceDictionary>

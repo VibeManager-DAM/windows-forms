@@ -53,7 +53,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0" Source="/Resources/home-icon.png" Width="32" Height="32" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="1" Text=" Dashboard" Foreground="White" Visibility="{Binding MenuTextVisibility}"
+                        <TextBlock Grid.Column="1" Text="{DynamicResource Dashboard}" Foreground="White" Visibility="{Binding MenuTextVisibility}"
                                    VerticalAlignment="Center" Margin="10,0,0,0" FontSize="26" FontFamily="/Fonts/Gabarito.ttf"/>
                     </Grid>
                 </Button>
@@ -65,7 +65,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0" Source="/Resources/user-menu-icon.png" Width="32" Height="32" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="1" Text=" Users" Foreground="White" Visibility="{Binding MenuTextVisibility}"
+                        <TextBlock Grid.Column="1" Text="Users" Foreground="White" Visibility="{Binding MenuTextVisibility}"
                                    VerticalAlignment="Center" Margin="10,0,0,0" FontSize="26" FontFamily="/Fonts/Gabarito.ttf"/>
                     </Grid>
                 </Button>

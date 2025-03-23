@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <!-- Títol "Languages" amb suport per multi-idioma -->
-        <TextBlock Text="Lenguajes"
+        <TextBlock Text="{DynamicResource Languages}"
                FontSize="24" FontWeight="Bold"
                Foreground="White"
                HorizontalAlignment="Center"
