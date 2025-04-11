@@ -70,13 +70,13 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <!-- Título -->
-                <TextBlock Text="Do you want to exit?" 
+                <TextBlock Text="{DynamicResource ConfirmExit}" 
                        FontSize="16" FontWeight="Bold" Foreground="#D8E1CC" 
                        TextAlignment="Center" Margin="0,10,0,10"/>
 
                 <!-- Botones -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                    <Button Content="Yes" Width="90" Height="40" Margin="5"
+                    <Button Content="{DynamicResource Yes}" Width="90" Height="40" Margin="5"
         Style="{StaticResource FuturisticButtonStyle}"
         Click="ConfirmExit"/>
                     <Button Content="No" Width="90" Height="40" Margin="5"

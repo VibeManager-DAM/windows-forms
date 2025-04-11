@@ -29,5 +29,8 @@
         <views:Settings />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewmodels:MenuEventVM}">
+        <views:MenuEvent />
+    </DataTemplate>
 
 </ResourceDictionary>

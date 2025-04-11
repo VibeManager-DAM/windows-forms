@@ -1,10 +1,120 @@
 ﻿<UserControl x:Class="VibeManager.Pages.Spaces"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
-        <TextBlock Text="📍 Lugares" FontSize="30" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center"/>
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:VibeManager.Pages"
+             xmlns:vm="clr-namespace:VibeManager.ViewModels"
+             xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="StyledButton" TargetType="Button">
+            <Setter Property="Background" Value="#03201D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="/Fonts/Gabarito.ttf #Gabarito"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150" Height="40"
+                        CornerRadius="20"
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#39514F"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <!-- Parte izquierda -->
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <!-- Mapa -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Parte izquierda -->
+        <StackPanel Grid.Column="0" Margin="10,0,20,0" VerticalAlignment="Top">
+            <TextBlock Text="Search User"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Foreground="#39514F"
+                       Margin="0,0,0,10" />
+
+            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                     FontSize="14"
+                     FontWeight="Normal"
+                     Foreground="Black"
+                     BorderBrush="DarkGray"
+                     BorderThickness="0,0,0,2"
+                     Height="30"
+                     Width="450"
+                     Padding="30,0,0,0"
+                     VerticalContentAlignment="Center"
+                     Margin="0,0,0,10">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/Resources/user-icon.png"
+                                Stretch="Uniform"
+                                AlignmentX="Left"
+                                TileMode="None"/>
+                </TextBox.Background>
+            </TextBox>
+
+            <!-- Tabla de espacios -->
+            <DataGrid ItemsSource="{Binding PagedSpaces}"
+                      SelectedItem="{Binding SelectedSpace, Mode=TwoWay}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      Height="200"
+                      Width="450"
+                      IsReadOnly="True"
+                      Margin="0,0,0,10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*" />
+                    <DataGridTextColumn Header="Capacidad" Binding="{Binding Capacity}" Width="Auto" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Botones de navegación -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Button Content="Back" Width="160" Click="PreviousPage" Style="{StaticResource StyledButton}"/>
+                <Button Content="Next" Width="160" Click="NextPage" Style="{StaticResource StyledButton}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Separador -->
+        <Separator Grid.Column="1" Width="10" />
+
+        <!-- Parte derecha: el mapa -->
+        <Border Grid.Column="2"
+                CornerRadius="15"
+                BorderThickness="2"
+                BorderBrush="#8A16C1"
+                Background="White"
+                Margin="0"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                ClipToBounds="True">
+            <Border.Effect>
+                <DropShadowEffect Color="#8A16C1" BlurRadius="30" ShadowDepth="0"/>
+            </Border.Effect>
+
+            <gmap:GMapControl x:Name="MapControl"
+                              Margin="0"
+                              Loaded="MapControl_Loaded"
+                              SizeChanged="MapControl_SizeChanged"/>
+        </Border>
     </Grid>
 </UserControl>

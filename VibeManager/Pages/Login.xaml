@@ -24,7 +24,7 @@
 
 
 
-            <TextBlock Text="Username"
+            <TextBlock Text="{DynamicResource Username}"
                        Foreground="#39514F"
                        FontSize="18"
                        FontWeight="Medium"
@@ -51,7 +51,7 @@
                 </TextBox.Background>
             </TextBox>
 
-            <TextBlock Text="Password"
+            <TextBlock Text="{DynamicResource Password}"
                        Foreground="#39514F"
                        FontSize="18"
                        FontWeight="Medium"
@@ -82,7 +82,7 @@
             <Button x:Name="btnLogin"
                     Command="{Binding LoginCommand}"
                     BorderThickness="0"
-                    Content="LOG IN"
+                    Content="{DynamicResource LogIn}"
                     Foreground="White"
                     FontSize="12"
                     FontFamily="/Fonts/Gabarito.ttf #Gabarito"

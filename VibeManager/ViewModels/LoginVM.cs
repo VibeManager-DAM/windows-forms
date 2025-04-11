@@ -23,6 +23,10 @@ namespace VibeManager.ViewModels
             {
                 _mainViewModel.ShowDashboard();
             }
+            else if (Username == "user" && Password == "1234")
+            {
+                _mainViewModel.ShowEvents();
+            }
             else
             {
                 MessageBox.Show("Usuario o contraseña incorrectos");

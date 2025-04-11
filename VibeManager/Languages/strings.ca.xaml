@@ -5,15 +5,26 @@
     <!-- PAGES -->
     <sys:String x:Key="Languages">Idiomes</sys:String>
     <sys:String x:Key="SettingsTitle">Configuració</sys:String>
-    <sys:String x:Key="FAQS">Preguntes Freqüents</sys:String>
 
     <!-- GENERAL -->
     <sys:String x:Key="ConfirmExit">Vols sortir?</sys:String>
     <sys:String x:Key="LogOut">Sortir</sys:String>
     <sys:String x:Key="Yes">Sí</sys:String>
-    
-    <sys:String x:Key="Administrators">Administradors</sys:String>
-    <sys:String x:Key="Artists">Artistes</sys:String>
+
+    <sys:String x:Key="Menu">Menú</sys:String>
+
+    <sys:String x:Key="Dashboard">Panell</sys:String>
+
+    <sys:String x:Key="Users">Usuaris</sys:String>
+    <sys:String x:Key="SearchUser">Buscar Usuari</sys:String>
+    <sys:String x:Key="Name">Nom</sys:String>
+    <sys:String x:Key="Role">Rol</sys:String>
+    <sys:String x:Key="Email">Correu</sys:String>
+    <sys:String x:Key="Save">Guardar</sys:String>
+    <sys:String x:Key="Delete">Eliminar</sys:String>
+    <sys:String x:Key="Back">Enrere</sys:String>
+    <sys:String x:Key="Next">Següent</sys:String>
+
     <sys:String x:Key="Spaces">Espais</sys:String>
 
     <sys:String x:Key="Username">Usuari</sys:String>
@@ -23,7 +34,7 @@
     <sys:String x:Key="Hour">Hora</sys:String>
     <sys:String x:Key="Event">Event</sys:String>
 
-    <sys:String x:Key="Dashboard">Panell General</sys:String>
+    
     <sys:String x:Key="EventsToday">Events d'Avui</sys:String>
     <sys:String x:Key="TotalSuperAdmins">SuperAdmins</sys:String>
     <sys:String x:Key="TotalAdmins">Admins</sys:String>
@@ -35,12 +46,9 @@
     <sys:String x:Key="TotalEventsDone">Events Fets</sys:String>
     <sys:String x:Key="UserRegistrationsperMonth">Registre d'Usuaris per Mes</sys:String>
 
-    <sys:String x:Key="Name">Nom</sys:String>
-    <sys:String x:Key="Role">Rol</sys:String>
-    <sys:String x:Key="Email">Correu</sys:String>
-    <sys:String x:Key="Save">Guardar</sys:String>
-    <sys:String x:Key="Delete">Eliminar</sys:String>
-    <sys:String x:Key="SearchUser">Buscar Usuari</sys:String>
+    
+    
+    
     <sys:String x:Key="Rating">Valoració</sys:String>
     <sys:String x:Key="Capacity">Capacitat</sys:String>
     <sys:String x:Key="Genre">Gènere</sys:String>

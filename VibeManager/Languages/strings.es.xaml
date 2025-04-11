@@ -5,17 +5,28 @@
     <!-- PAGES -->
     <sys:String x:Key="Languages">Idiomas</sys:String>
     <sys:String x:Key="SettingsTitle">Configuración</sys:String>
-    <sys:String x:Key="FAQS">Preguntas Frequentes</sys:String>
 
     <!-- GENERAL -->
     <sys:String x:Key="ConfirmExit">¿Quieres salir?</sys:String>
     <sys:String x:Key="LogOut">Salir</sys:String>
     <sys:String x:Key="Yes">Sí</sys:String>
-    
-    <sys:String x:Key="Administrators">Administradores</sys:String>
-    <sys:String x:Key="Artists">Artistas</sys:String>
+
+    <sys:String x:Key="Menu">Menú</sys:String>
+
+    <sys:String x:Key="Dashboard">Panel</sys:String>
+
+    <sys:String x:Key="Users">Usuarios</sys:String>
+    <sys:String x:Key="SearchUser">Buscar Usuario</sys:String>
+    <sys:String x:Key="Name">Nombre</sys:String>
+    <sys:String x:Key="Role">Rol</sys:String>
+    <sys:String x:Key="Email">Correo</sys:String>
+    <sys:String x:Key="Save">Guardar</sys:String>
+    <sys:String x:Key="Delete">Borrar</sys:String>
+    <sys:String x:Key="Back">Atrás</sys:String>
+    <sys:String x:Key="Next">Siguiente</sys:String>
+
     <sys:String x:Key="Spaces">Espacios</sys:String>
-    
+
     <sys:String x:Key="Username">Usuario</sys:String>
     <sys:String x:Key="Password">Contraseña</sys:String>
     <sys:String x:Key="LogIn">Iniciar sesión</sys:String>
@@ -23,7 +34,7 @@
     <sys:String x:Key="Hour">Hora</sys:String>
     <sys:String x:Key="Event">Evento</sys:String>
 
-    <sys:String x:Key="Dashboard">Panel General</sys:String>
+    
     <sys:String x:Key="EventsToday">Eventos de Hoy</sys:String>
     <sys:String x:Key="TotalSuperAdmins">SuperAdmins</sys:String>
     <sys:String x:Key="TotalAdmins">Admins</sys:String>
@@ -35,12 +46,9 @@
     <sys:String x:Key="TotalEventsDone">Eventos Hechos</sys:String>
     <sys:String x:Key="UserRegistrationsperMonth">Registro de Usuarios por Mes</sys:String>
 
-    <sys:String x:Key="Name">Nombre</sys:String>
-    <sys:String x:Key="Role">Rol</sys:String>
-    <sys:String x:Key="Email">Correo</sys:String>
-    <sys:String x:Key="Save">Guardar</sys:String>
-    <sys:String x:Key="Delete">Borrar</sys:String>
-    <sys:String x:Key="SearchUser">Buscar Usuario</sys:String>
+    
+    
+    
     <sys:String x:Key="Rating">Valoración</sys:String>
     <sys:String x:Key="Capacity">Capacidad</sys:String>
     <sys:String x:Key="Genre">Genero</sys:String>

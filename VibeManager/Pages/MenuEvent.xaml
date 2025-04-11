@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="VibeManager.Pages.MenuEvent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VibeManager.Pages"
+             mc:Ignorable="d" 
+             xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+             d:DesignHeight="500" d:DesignWidth="800">
+
+    <Grid>
+        <!-- Definición de columnas para el mapa y el formulario -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <!-- Columna para el formulario -->
+            <ColumnDefinition Width="*"/>
+            <!-- Columna para el mapa -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Contenedor para el formulario -->
+        <StackPanel Grid.Column="0" Margin="10">
+            <!-- Título del Evento -->
+            <Label Content="Título:" HorizontalAlignment="Left"/>
+            <TextBox x:Name="TitleTextBox" Width="400" Margin="0,5" />
+
+            <!-- Descripción del Evento -->
+            <Label Content="Descripción:" HorizontalAlignment="Left"/>
+            <TextBox x:Name="DescriptionTextBox" Width="400" Height="80" Margin="0,5" />
+
+            <!-- Fecha del Evento -->
+            <Label Content="Fecha:" HorizontalAlignment="Left"/>
+            <DatePicker x:Name="DatePicker" Width="200" Margin="0,5" />
+
+            <!-- Hora del Evento -->
+            <Label Content="Hora:" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="TimeComboBox" Width="200" Margin="0,5">
+                <ComboBoxItem>08:00</ComboBoxItem>
+                <ComboBoxItem>09:00</ComboBoxItem>
+                <ComboBoxItem>10:00</ComboBoxItem>
+                <!-- Más horas aquí -->
+            </ComboBox>
+
+            <!-- Capacidad -->
+            <Label Content="Capacidad:" HorizontalAlignment="Left"/>
+            <TextBox x:Name="CapacityTextBox" Width="100" Margin="0,5" />
+
+            <!-- Checkbox para asientos disponibles -->
+            <CheckBox x:Name="SeatsAvailableCheckBox" Content="¿Evento con asientos disponibles?" HorizontalAlignment="Left" Margin="0,5" Checked="SeatsAvailableCheckBox_Checked" Unchecked="SeatsAvailableCheckBox_Unchecked"/>
+
+            <!-- Número de filas y columnas (solo si el checkbox está marcado) -->
+            <StackPanel x:Name="SeatsPanel" Orientation="Horizontal" Visibility="Collapsed" Margin="0,5">
+                <Label Content="Filas:" HorizontalAlignment="Left"/>
+                <TextBox x:Name="RowsTextBox" Width="50" Margin="5,0"/>
+                <Label Content="Columnas:" HorizontalAlignment="Left"/>
+                <TextBox x:Name="ColumnsTextBox" Width="50" Margin="5,0"/>
+            </StackPanel>
+
+            <!-- Seleccionar espacio -->
+            <Label Content="Seleccionar Espacio:" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="SpaceComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,260,10,0" Width="400" Grid.Row="6"/>
+
+            <!-- Botón para guardar -->
+            <Button Content="Guardar Evento" Width="120" Height="40" Margin="0,10" Click="SaveEventButton_Click" />
+        </StackPanel>
+
+        <!-- Separador entre el formulario y el mapa -->
+        <Separator Grid.Column="1" Width="10" Margin="5,0"/>
+
+        <!-- Mapa en la parte derecha -->
+        <gmap:GMapControl x:Name="GMapControl" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseLeftButtonDown="GMapControl_MouseLeftButtonDown" />
+    </Grid>
+</UserControl>

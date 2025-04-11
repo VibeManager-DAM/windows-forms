@@ -1,10 +1,69 @@
 ﻿<UserControl x:Class="VibeManager.Pages.Dashboard"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             Height="600" Width="1100">
     <Grid>
-        <TextBlock Text="🏠 Dashboard" FontSize="30" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.3*"/>
+            <ColumnDefinition Width="*"/>
+            <!-- Columna para el resumen de usuarios -->
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Fila para las notificaciones y resumen -->
+            <RowDefinition Height="*"/>
+            <!-- Fila para el gráfico -->
+        </Grid.RowDefinitions>
+
+        <!-- Notificaciones en la esquina superior izquierda -->
+        <Border Background="#03201D" Padding="10" CornerRadius="10" Margin="20" Grid.Row="0" Grid.Column="0" Height="200">
+            <StackPanel>
+                <TextBlock Text="Notificaciones" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
+                <ListBox x:Name="NotificationsList" Background="Transparent" Foreground="White" BorderThickness="0" Height="150">
+                    <ListBoxItem Content="Evento próximo: 'Concierto de Música' en 2 días." />
+                    <ListBoxItem Content="Nuevo usuario registrado: Juan Pérez" />
+                    <ListBoxItem Content="¡Alerta! El espacio 'Sala A' se ha quedado sin inventario de micrófonos." />
+                </ListBox>
+            </StackPanel>
+        </Border>
+
+        <!-- Resumen de los usuarios en la esquina superior derecha -->
+        <Border Background="#03201D" Padding="10" CornerRadius="10" Margin="20" Grid.Row="0" Grid.Column="2" Height="200">
+            <StackPanel>
+                <TextBlock Text="Resumen General" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Usuarios Registrados:" FontSize="16" Foreground="White"/>
+                    <TextBlock x:Name="TotalUsers" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Eventos Programados:" FontSize="16" Foreground="White"/>
+                    <TextBlock x:Name="TotalEvents" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Reservas Realizadas:" FontSize="16" Foreground="White"/>
+                    <TextBlock x:Name="TotalReservations" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Gráficos debajo del resumen y notificaciones -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Gráfico de Actividad" FontSize="20" FontWeight="Bold" Foreground="Black" Margin="0,0,0,10" Grid.Row="0"/>
+
+            <!-- Gráfico de actividad -->
+            <Border Background="#03201D" Padding="10" CornerRadius="10" Margin="0,0,0,10" Grid.Row="2">
+                <oxy:PlotView x:Name="ActivityChart" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>

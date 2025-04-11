@@ -17,7 +17,7 @@
         <!-- Títol "Languages" amb suport per multi-idioma -->
         <TextBlock Text="{DynamicResource Languages}"
                FontSize="24" FontWeight="Bold"
-               Foreground="White"
+               Foreground="#03201D"
                HorizontalAlignment="Center"
                VerticalAlignment="Top"
                Margin="0,30,0,20"
@@ -61,11 +61,11 @@
         </Grid>
 
         <!-- Botó de Log Out -->
-        <Button Content="salir"
+        <Button Content="{DynamicResource LogOut}"
             Command="{Binding LogoutCommand}"
             Click="LogoutClicked"
             Width="200" Height="50"
-            Background="Red"
+            Background="#03201D"
             Foreground="White"
             FontSize="16"
             FontWeight="Bold"

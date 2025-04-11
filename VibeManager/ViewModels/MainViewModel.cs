@@ -27,6 +27,10 @@ namespace VibeManager.ViewModels
         {
             CurrentView = new HomeVM();
         }
+        public void ShowEvents()
+        {
+            CurrentView = new MenuEventVM();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)

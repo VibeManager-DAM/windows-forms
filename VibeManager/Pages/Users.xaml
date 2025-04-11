@@ -34,7 +34,7 @@
     <Grid>
         <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="5">
-                <TextBlock Text="Buscar usuario:"
+                <TextBlock Text="{DynamicResource SearchUser}"
                            Foreground="#39514F"
                            FontSize="18"
                            FontWeight="Medium"
@@ -60,8 +60,8 @@
                     </TextBox.Background>
                 </TextBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0,0,0">
-                    <Button Content="Atrás" Width="200" Click="PreviousPage" Style="{StaticResource StyledButton}"/>
-                    <Button Content="Delante" Width="200" Click="NextPage" Style="{StaticResource StyledButton}"/>
+                    <Button Content="{DynamicResource Back}" Width="200" Click="PreviousPage" Style="{StaticResource StyledButton}"/>
+                    <Button Content="{DynamicResource Next}" Width="200" Click="NextPage" Style="{StaticResource StyledButton}"/>
                 </StackPanel>
             </StackPanel>
 
@@ -69,31 +69,31 @@
                       CanUserAddRows="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                    <DataGridTextColumn Header="Nombre" Binding="{Binding Fullname}" Width="*"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
-                    <DataGridTextColumn Header="Rol" Binding="{Binding RolName}" Width="*"/>
+                    <DataGridTextColumn Header="{DynamicResource Name}" Binding="{Binding Fullname}" Width="*"/>
+                    <DataGridTextColumn Header="{DynamicResource Email}" Binding="{Binding Email}" Width="*"/>
+                    <DataGridTextColumn Header="{DynamicResource Role}" Binding="{Binding RolName}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
 
             <StackPanel Orientation="Vertical" Margin="10">
-                <TextBlock Text="Nombre Completo:" Foreground="#39514F" FontSize="18" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
+                <TextBlock Text="{DynamicResource Name}" Foreground="#39514F" FontSize="18" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
                 <TextBox Text="{Binding SelectedUser.Fullname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          FontSize="16" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito" Foreground="Black" CaretBrush="LightGray" 
                          BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Margin="0,5,0,0" Padding="5,0,0,0"/>
 
-                <TextBlock Text="Correo Electrónico:" Foreground="#39514F" FontSize="18" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
+                <TextBlock Text="{DynamicResource Email}" Foreground="#39514F" FontSize="18" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
                 <TextBox Text="{Binding SelectedUser.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                          FontSize="16" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito" Foreground="Black" CaretBrush="LightGray" 
                          BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center" Margin="0,5,0,0" Padding="5,0,0,0"/>
 
-                <TextBlock Text="Rol:" Foreground="#39514F" FontSize="18" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
+                <TextBlock Text="{DynamicResource Role}" Foreground="#39514F" FontSize="18" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
                 <ComboBox ItemsSource="{Binding Roles}" SelectedValue="{Binding SelectedUser.IdRol, Mode=TwoWay}" DisplayMemberPath="Name" SelectedValuePath="Id" 
                           FontSize="16" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito" Foreground="Black" BorderBrush="DarkGray" Height="28" Margin="0,5,0,0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" > 
-                <Button Content="Guardar" Width="200" Style="{StaticResource StyledButton}"/>
-                <Button Content="Eliminar" Width="200" Style="{StaticResource StyledButton}"/>
+                <Button Content="{DynamicResource Save}" Width="200" Style="{StaticResource StyledButton}"/>
+                <Button Content="{DynamicResource Delete}" Width="200" Style="{StaticResource StyledButton}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

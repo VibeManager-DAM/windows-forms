@@ -5,16 +5,28 @@
     <!-- PAGES -->
     <sys:String x:Key="Languages">Languages</sys:String>
     <sys:String x:Key="SettingsTitle">Settings</sys:String>
-    <sys:String x:Key="FAQS">FAQS</sys:String>
 
     <!-- GENERAL -->
     <sys:String x:Key="ConfirmExit">Do you want to exit?</sys:String>
     <sys:String x:Key="LogOut">Log Out</sys:String>
     <sys:String x:Key="Yes">Yes</sys:String>
-    
-    <sys:String x:Key="Administrators">Administrators</sys:String>
-    <sys:String x:Key="Artists">Artists</sys:String>
+
+    <sys:String x:Key="Menu">Menu</sys:String>
+
+    <sys:String x:Key="Dashboard">Dashboard</sys:String>
+
+    <sys:String x:Key="Users">Users</sys:String>
+    <sys:String x:Key="SearchUser">Search User</sys:String>
+    <sys:String x:Key="Name">Name</sys:String>
+    <sys:String x:Key="Role">Role</sys:String>
+    <sys:String x:Key="Email">Email</sys:String>
+    <sys:String x:Key="Save">Save</sys:String>
+    <sys:String x:Key="Delete">Delete</sys:String>
+    <sys:String x:Key="Back">Back</sys:String>
+    <sys:String x:Key="Next">Next</sys:String>
+
     <sys:String x:Key="Spaces">Spaces</sys:String>
+
 
     <sys:String x:Key="Username">Username</sys:String>
     <sys:String x:Key="Password">Password</sys:String>
@@ -23,7 +35,7 @@
     <sys:String x:Key="Hour">Hour</sys:String>
     <sys:String x:Key="Event">Event</sys:String>
 
-    <sys:String x:Key="Dashboard">Dashboard</sys:String>
+
     <sys:String x:Key="EventsToday">Events Today</sys:String>
     <sys:String x:Key="TotalSuperAdmins">SuperAdmins</sys:String>
     <sys:String x:Key="TotalAdmins">Admins</sys:String>
@@ -35,12 +47,9 @@
     <sys:String x:Key="TotalEventsDone">Events Done</sys:String>
     <sys:String x:Key="UserRegistrationsperMonth">User Registrations per Month</sys:String>
 
-    <sys:String x:Key="Name">Name</sys:String>
-    <sys:String x:Key="Role">Role</sys:String>
-    <sys:String x:Key="Email">Email</sys:String>
-    <sys:String x:Key="Save">Save</sys:String>
-    <sys:String x:Key="Delete">Delete</sys:String>
-    <sys:String x:Key="SearchUser">Search User</sys:String>
+    
+    
+    
     <sys:String x:Key="Rating">Rating</sys:String>
     <sys:String x:Key="Capacity">Capacity</sys:String>
     <sys:String x:Key="Genre">Genre</sys:String>
