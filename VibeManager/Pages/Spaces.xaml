@@ -47,7 +47,7 @@
 
         <!-- Parte izquierda -->
         <StackPanel Grid.Column="0" Margin="10,0,20,0" VerticalAlignment="Top">
-            <TextBlock Text="Search User"
+            <TextBlock Text="Search space"
                        FontSize="20"
                        FontWeight="Bold"
                        Foreground="#39514F"

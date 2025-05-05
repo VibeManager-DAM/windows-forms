@@ -82,6 +82,8 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.119.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
@@ -103,6 +105,45 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\CHAT.cs">
+      <DependentUpon>ModelVibe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EVENTS.cs">
+      <DependentUpon>ModelVibe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEMS.cs">
+      <DependentUpon>ModelVibe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MESSAGES.cs">
+      <DependentUpon>ModelVibe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelVibe.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelVibe.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelVibe.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelVibe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelVibe.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelVibe.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROL.cs">
+      <DependentUpon>ModelVibe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SPACES.cs">
+      <DependentUpon>ModelVibe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TICKETS.cs">
+      <DependentUpon>ModelVibe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERS.cs">
+      <DependentUpon>ModelVibe.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
@@ -218,6 +259,13 @@
     <Resource Include="Fonts\Gabarito.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <EntityDeploy Include="Models\ModelVibe.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelVibe.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ModelVibe.edmx.diagram">
+      <DependentUpon>ModelVibe.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -281,6 +329,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ModelVibe.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelVibe.edmx</DependentUpon>
+      <LastGenOutput>ModelVibe.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelVibe.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelVibe.edmx</DependentUpon>
+      <LastGenOutput>ModelVibe.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
