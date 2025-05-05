@@ -108,6 +108,15 @@
     <Compile Include="Models\CHAT.cs">
       <DependentUpon>ModelVibe.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Controllers\ChatOrm.cs" />
+    <Compile Include="Models\Controllers\EventsOrm.cs" />
+    <Compile Include="Models\Controllers\ItemsOrm.cs" />
+    <Compile Include="Models\Controllers\MessagesOrm.cs" />
+    <Compile Include="Models\Controllers\Orm.cs" />
+    <Compile Include="Models\Controllers\RolOrm.cs" />
+    <Compile Include="Models\Controllers\SpacesOrm.cs" />
+    <Compile Include="Models\Controllers\TicketsOrm.cs" />
+    <Compile Include="Models\Controllers\UsersOrm.cs" />
     <Compile Include="Models\EVENTS.cs">
       <DependentUpon>ModelVibe.tt</DependentUpon>
     </Compile>
@@ -328,7 +337,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Controllers\" />
     <Folder Include="Tools\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using VibeManager.Models.Controllers;
 
 namespace VibeManager.ViewModels
 {
@@ -19,11 +20,12 @@ namespace VibeManager.ViewModels
 
         private void Login(object parameter)
         {
-            if (Username == "admin" && Password == "1234")
+            int? idRol = UsersOrm.Login(Username, Password);
+            if (idRol.Equals(3)) // admin
             {
                 _mainViewModel.ShowDashboard();
             }
-            else if (Username == "user" && Password == "1234")
+            else if (idRol.Equals(1)) // organizer
             {
                 _mainViewModel.ShowEvents();
             }
