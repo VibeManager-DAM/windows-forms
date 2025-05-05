@@ -328,6 +328,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Controllers\" />
     <Folder Include="Tools\" />
   </ItemGroup>
   <ItemGroup>

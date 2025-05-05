@@ -5,24 +5,24 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ec4906a988cf4b87a38cb32371bd4300" Name="Diagram1">
-        <EntityTypeShape EntityType="VibeModel.CHAT" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="VibeModel.EVENTS" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="VibeModel.ITEMS" Width="1.5" PointX="9.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VibeModel.MESSAGES" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VibeModel.ROL" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VibeModel.SPACES" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VibeModel.TICKETS" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VibeModel.USERS" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <AssociationConnector Association="VibeModel.FK__CHAT__id_event__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="VibeModel.FK__CHAT__id_user__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="VibeModel.FK__MESSAGES__id_cha__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="VibeModel.FK__EVENTS__id_organ__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="VibeModel.FK__TICKETS__id_even__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="VibeModel.FK__ITEMS__id_space__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="VibeModel.FK__MESSAGES__sender__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="VibeModel.FK__USERS__id_rol__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="VibeModel.FK__TICKETS__id_user__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="VibeModel.RESERVES" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VibeModel.CHAT" Width="1.5" PointX="10.5" PointY="4.875" />
+        <EntityTypeShape EntityType="VibeModel.EVENTS" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="VibeModel.ITEMS" Width="1.5" PointX="9.75" PointY="8.5" />
+        <EntityTypeShape EntityType="VibeModel.MESSAGES" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VibeModel.ROL" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="VibeModel.SPACES" Width="1.5" PointX="7.5" PointY="8.125" />
+        <EntityTypeShape EntityType="VibeModel.TICKETS" Width="1.5" PointX="7.5" PointY="4.625" />
+        <EntityTypeShape EntityType="VibeModel.USERS" Width="1.5" PointX="3" PointY="4.5" />
+        <AssociationConnector Association="VibeModel.FK__CHAT__id_event__73BA3083" />
+        <AssociationConnector Association="VibeModel.FK__CHAT__id_user__72C60C4A" />
+        <AssociationConnector Association="VibeModel.FK__MESSAGES__id_cha__787EE5A0" />
+        <AssociationConnector Association="VibeModel.FK__EVENTS__id_organ__6383C8BA" />
+        <AssociationConnector Association="VibeModel.FK__TICKETS__id_even__6EF57B66" />
+        <AssociationConnector Association="VibeModel.FK__ITEMS__id_space__6C190EBB" />
+        <AssociationConnector Association="VibeModel.FK__MESSAGES__sender__778AC167" />
+        <AssociationConnector Association="VibeModel.FK__USERS__id_rol__5FB337D6" />
+        <AssociationConnector Association="VibeModel.FK__TICKETS__id_user__6FE99F9F" />
+        <AssociationConnector Association="VibeModel.RESERVES" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

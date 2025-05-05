@@ -33,6 +33,7 @@ namespace VibeManager.Models
         public Nullable<int> num_rows { get; set; }
         public Nullable<int> num_columns { get; set; }
         public int id_organizer { get; set; }
+        public decimal price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHAT> CHAT { get; set; }
