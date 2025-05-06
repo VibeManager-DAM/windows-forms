@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using VibeManager.Models.Controllers;
 
 namespace VibeManager.Pages
 {
@@ -17,10 +18,10 @@ namespace VibeManager.Pages
 
         private void LoadDashboardData()
         {
-            // Ejemplo de datos dinámicos, estos podrían venir de la base de datos o API
-            int totalUsers = 150; // Ejemplo: obtener de base de datos
-            int totalEvents = 50; // Ejemplo: obtener de base de datos
-            int totalReservations = 200; // Ejemplo: obtener de base de datos
+
+            int totalUsers = UsersOrm.getTotalUsers(); // Ejemplo: obtener de base de datos
+            int totalEvents = EventsOrm.getTotalEvents(); ; // Ejemplo: obtener de base de datos
+            int totalReservations = ReservesOrm.getTotalReserves(); // Ejemplo: obtener de base de datos
 
             // Mostrar datos en los controles TextBlock
             TotalUsers.Text = totalUsers.ToString();

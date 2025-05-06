@@ -105,6 +105,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\Role.cs" />
+    <Compile Include="Data\Space.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="Models\CHAT.cs">
       <DependentUpon>ModelVibe.tt</DependentUpon>
     </Compile>
@@ -113,6 +116,7 @@
     <Compile Include="Models\Controllers\ItemsOrm.cs" />
     <Compile Include="Models\Controllers\MessagesOrm.cs" />
     <Compile Include="Models\Controllers\Orm.cs" />
+    <Compile Include="Models\Controllers\ReservesOrm.cs" />
     <Compile Include="Models\Controllers\RolOrm.cs" />
     <Compile Include="Models\Controllers\SpacesOrm.cs" />
     <Compile Include="Models\Controllers\TicketsOrm.cs" />
@@ -140,6 +144,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelVibe.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RESERVES.cs">
+      <DependentUpon>ModelVibe.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ROL.cs">
       <DependentUpon>ModelVibe.tt</DependentUpon>
@@ -336,9 +343,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Models\ModelVibe.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

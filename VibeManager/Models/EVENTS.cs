@@ -18,8 +18,8 @@ namespace VibeManager.Models
         public EVENTS()
         {
             this.CHAT = new HashSet<CHAT>();
+            this.RESERVES = new HashSet<RESERVES>();
             this.TICKETS = new HashSet<TICKETS>();
-            this.SPACES = new HashSet<SPACES>();
         }
     
         public int id { get; set; }
@@ -39,8 +39,8 @@ namespace VibeManager.Models
         public virtual ICollection<CHAT> CHAT { get; set; }
         public virtual USERS USERS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TICKETS> TICKETS { get; set; }
+        public virtual ICollection<RESERVES> RESERVES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SPACES> SPACES { get; set; }
+        public virtual ICollection<TICKETS> TICKETS { get; set; }
     }
 }

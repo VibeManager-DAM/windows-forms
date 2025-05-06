@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VibeManager.Data;
+using VibeManager.Models.Controllers;
 
 namespace VibeManager.Pages
 {
@@ -53,50 +55,16 @@ namespace VibeManager.Pages
 
         private void LoadData()
         {
-            Roles = new ObservableCollection<Role>
-            {
-                new Role { Id = 1, Name = "Superadministrador" },
-                new Role { Id = 2, Name = "Organizador de eventos" },
-                new Role { Id = 3, Name = "Usuario normal" }
-            };
+            ListUsers = new ObservableCollection<User>(UsersOrm.GetAllUsers());
+            Roles = new ObservableCollection<Role>(UsersOrm.GetDistinctRolesFromUsers());
 
-            ListUsers = new ObservableCollection<User>
-            {
-                new User { Id = 1, Fullname = "Admin", Email = "admin@example.com", IdRol = 1 },
-                new User { Id = 2, Fullname = "Event Manager", Email = "event@example.com", IdRol = 2 },
-                new User { Id = 3, Fullname = "User", Email = "user@example.com", IdRol = 3 },
-                new User { Id = 4, Fullname = "User2", Email = "user2@example.com", IdRol = 3 },
-                new User { Id = 5, Fullname = "User3", Email = "user3@example.com", IdRol = 3 },
-                new User { Id = 6, Fullname = "User4", Email = "user4@example.com", IdRol = 3 },
-                new User { Id = 7, Fullname = "User5", Email = "user5@example.com", IdRol = 3 },
-                new User { Id = 8, Fullname = "User6", Email = "user6@example.com", IdRol = 2 },
-                new User { Id = 9, Fullname = "Admin", Email = "admin@example.com", IdRol = 1 },
-                new User { Id = 10, Fullname = "Event Manager", Email = "event@example.com", IdRol = 2 },
-                new User { Id = 11, Fullname = "User", Email = "user@example.com", IdRol = 3 },
-                new User { Id = 12, Fullname = "User2", Email = "user2@example.com", IdRol = 3 },
-                new User { Id = 13, Fullname = "User3", Email = "user3@example.com", IdRol = 3 },
-                new User { Id = 14, Fullname = "User4", Email = "user4@example.com", IdRol = 3 },
-                new User { Id = 15, Fullname = "User5", Email = "user5@example.com", IdRol = 3 },
-                new User { Id = 16, Fullname = "User6", Email = "user6@example.com", IdRol = 2 },
-                new User { Id = 17, Fullname = "Admin", Email = "admin@example.com", IdRol = 1 },
-                new User { Id = 18, Fullname = "Event Manager", Email = "event@example.com", IdRol = 2 },
-                new User { Id = 19, Fullname = "User", Email = "user@example.com", IdRol = 3 },
-                new User { Id = 20, Fullname = "User2", Email = "user2@example.com", IdRol = 3 },
-                new User { Id = 21, Fullname = "User3", Email = "user3@example.com", IdRol = 3 },
-                new User { Id = 22, Fullname = "User4", Email = "user4@example.com", IdRol = 3 },
-                new User { Id = 23, Fullname = "User5", Email = "user5@example.com", IdRol = 3 },
-                new User { Id = 24, Fullname = "User6", Email = "user6@example.com", IdRol = 2 }
-            };
-
-            foreach (var user in ListUsers)
-            {
-                user.RolName = Roles.FirstOrDefault(r => r.Id == user.IdRol)?.Name ?? "Desconocido";
-            }
-
-            FilterUsers();
+            OnPropertyChanged(nameof(ListUsers));
+            OnPropertyChanged(nameof(Roles));
 
             FilterUsers();
         }
+
+
 
         private void FilterUsers()
         {
@@ -133,20 +101,60 @@ namespace VibeManager.Pages
                 FilterUsers();
             }
         }
-    }
+        private void SaveUser(object sender, RoutedEventArgs e)
+        {
+            if (SelectedUser == null || string.IsNullOrWhiteSpace(SelectedUser.Fullname) || string.IsNullOrWhiteSpace(SelectedUser.Email))
+            {
+                MessageBox.Show("Completa nombre y email.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
-    public class User
-    {
-        public int Id { get; set; }
-        public string Fullname { get; set; }
-        public string Email { get; set; }
-        public int IdRol { get; set; }
-        public string RolName { get; set; }
-    }
+            bool success = UsersOrm.SaveUser(SelectedUser);
 
-    public class Role
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+            if (success)
+            {
+                MessageBox.Show("Usuario guardado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                LoadData();
+                SelectedUser = new User();
+                OnPropertyChanged(nameof(SelectedUser));
+            }
+            else
+            {
+                MessageBox.Show("Error al guardar el usuario.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void DeleteUser(object sender, RoutedEventArgs e)
+        {
+            if (SelectedUser == null || SelectedUser.Id == 0)
+            {
+                MessageBox.Show("Selecciona un usuario válido para eliminar.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var result = MessageBox.Show("¿Estás seguro que deseas eliminar este usuario?", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                bool success = UsersOrm.DeleteUser(SelectedUser.Id);
+
+                if (success)
+                {
+                    MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadData();
+                    SelectedUser = new User();
+                    OnPropertyChanged(nameof(SelectedUser));
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el usuario.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void ClearFields(object sender, RoutedEventArgs e)
+        {
+            SelectedUser = new User();
+            OnPropertyChanged(nameof(SelectedUser));
+        }
     }
 }

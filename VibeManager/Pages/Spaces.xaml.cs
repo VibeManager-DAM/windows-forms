@@ -9,6 +9,8 @@ using System.Windows.Shapes;
 using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsPresentation;
+using VibeManager.Data;
+using VibeManager.Models.Controllers;
 
 namespace VibeManager.Pages
 {
@@ -67,14 +69,15 @@ namespace VibeManager.Pages
 
         private void LoadSpaces()
         {
-            AllSpaces.Add(new Space { Name = "Sala Norte", Capacity = 25, Latitude = 41.387, Longitude = 2.169 });
-            AllSpaces.Add(new Space { Name = "Oficina Central", Capacity = 40, Latitude = 41.388, Longitude = 2.171 });
-            AllSpaces.Add(new Space { Name = "Aula Sur", Capacity = 18, Latitude = 41.384, Longitude = 2.172 });
-            AllSpaces.Add(new Space { Name = "Sala Este", Capacity = 30, Latitude = 41.385, Longitude = 2.175 });
-            AllSpaces.Add(new Space { Name = "Sala Oeste", Capacity = 20, Latitude = 41.386, Longitude = 2.170 });
-            AllSpaces.Add(new Space { Name = "Oficina Secundaria", Capacity = 22, Latitude = 41.389, Longitude = 2.168 });
-            // Agregá más si querés probar la paginación
+            var spacesFromDb = SpacesOrm.SelectAllSpaces();
+
+            AllSpaces.Clear();
+            foreach (var space in spacesFromDb)
+            {
+                AllSpaces.Add(space);
+            }
         }
+
 
         private void FilterAndPaginateSpaces()
         {
@@ -204,13 +207,5 @@ namespace VibeManager.Pages
             if (handler != null)
                 handler(this, new PropertyChangedEventArgs(name));
         }
-    }
-
-    public class Space
-    {
-        public string Name { get; set; }
-        public int Capacity { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
     }
 }

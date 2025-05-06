@@ -5,24 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ec4906a988cf4b87a38cb32371bd4300" Name="Diagram1">
-        <EntityTypeShape EntityType="VibeModel.CHAT" Width="1.5" PointX="10.5" PointY="4.875" />
-        <EntityTypeShape EntityType="VibeModel.EVENTS" Width="1.5" PointX="5.25" PointY="3.875" />
-        <EntityTypeShape EntityType="VibeModel.ITEMS" Width="1.5" PointX="9.75" PointY="8.5" />
-        <EntityTypeShape EntityType="VibeModel.MESSAGES" Width="1.5" PointX="12.75" PointY="4.75" />
-        <EntityTypeShape EntityType="VibeModel.ROL" Width="1.5" PointX="0.75" PointY="5.125" />
-        <EntityTypeShape EntityType="VibeModel.SPACES" Width="1.5" PointX="7.5" PointY="8.125" />
-        <EntityTypeShape EntityType="VibeModel.TICKETS" Width="1.5" PointX="7.5" PointY="4.625" />
-        <EntityTypeShape EntityType="VibeModel.USERS" Width="1.5" PointX="3" PointY="4.5" />
-        <AssociationConnector Association="VibeModel.FK__CHAT__id_event__73BA3083" />
-        <AssociationConnector Association="VibeModel.FK__CHAT__id_user__72C60C4A" />
-        <AssociationConnector Association="VibeModel.FK__MESSAGES__id_cha__787EE5A0" />
-        <AssociationConnector Association="VibeModel.FK__EVENTS__id_organ__6383C8BA" />
-        <AssociationConnector Association="VibeModel.FK__TICKETS__id_even__6EF57B66" />
-        <AssociationConnector Association="VibeModel.FK__ITEMS__id_space__6C190EBB" />
-        <AssociationConnector Association="VibeModel.FK__MESSAGES__sender__778AC167" />
-        <AssociationConnector Association="VibeModel.FK__USERS__id_rol__5FB337D6" />
-        <AssociationConnector Association="VibeModel.FK__TICKETS__id_user__6FE99F9F" />
-        <AssociationConnector Association="VibeModel.RESERVES" />
+        <EntityTypeShape EntityType="VibeModel.CHAT" Width="1.5" PointX="7.5" PointY="6.25" />
+        <EntityTypeShape EntityType="VibeModel.EVENTS" Width="1.5" PointX="5.25" PointY="6.375" />
+        <EntityTypeShape EntityType="VibeModel.ITEMS" Width="1.5" PointX="7.5" PointY="12.5" />
+        <EntityTypeShape EntityType="VibeModel.MESSAGES" Width="1.5" PointX="9.75" PointY="2" />
+        <EntityTypeShape EntityType="VibeModel.RESERVES" Width="1.5" PointX="7.5" PointY="9.5" />
+        <EntityTypeShape EntityType="VibeModel.ROL" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VibeModel.SPACES" Width="1.5" PointX="5.25" PointY="12.125" />
+        <EntityTypeShape EntityType="VibeModel.TICKETS" Width="1.5" PointX="10.5" PointY="5.875" />
+        <EntityTypeShape EntityType="VibeModel.USERS" Width="1.5" PointX="3" PointY="4.125" />
+        <AssociationConnector Association="VibeModel.FK__CHAT__id_event__1AD3FDA4" />
+        <AssociationConnector Association="VibeModel.FK__CHAT__id_user__19DFD96B" />
+        <AssociationConnector Association="VibeModel.FK__MESSAGES__id_cha__1F98B2C1" />
+        <AssociationConnector Association="VibeModel.FK__EVENTS__id_organ__09A971A2" />
+        <AssociationConnector Association="VibeModel.FK__RESERVES__id_eve__0F624AF8" />
+        <AssociationConnector Association="VibeModel.FK__TICKETS__id_even__160F4887" />
+        <AssociationConnector Association="VibeModel.FK__ITEMS__id_space__1332DBDC" />
+        <AssociationConnector Association="VibeModel.FK__MESSAGES__sender__1EA48E88" />
+        <AssociationConnector Association="VibeModel.FK__RESERVES__id_spa__10566F31" />
+        <AssociationConnector Association="VibeModel.FK__USERS__id_rol__05D8E0BE" />
+        <AssociationConnector Association="VibeModel.FK__TICKETS__id_user__17036CC0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

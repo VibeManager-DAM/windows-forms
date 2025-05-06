@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.Windows.Input;
 using System.Windows.Media;
+using VibeManager.Data;
 
 namespace VibeManager.Pages
 {

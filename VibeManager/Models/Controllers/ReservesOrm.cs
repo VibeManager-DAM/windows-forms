@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace VibeManager.Models.Controllers
 {
-    public class EventsOrm
+    public class ReservesOrm
     {
-        public static int getTotalEvents()
+        public static int getTotalReserves()
         {
-            int totalEvents = 0;
+            int totalReserves = 0;
 
             try
             {
-                totalEvents = Orm.db.EVENTS
+                totalReserves = Orm.db.RESERVES
                     .Count();
             }
             catch (SqlException sqlException)
@@ -28,7 +28,7 @@ namespace VibeManager.Models.Controllers
             }
 
 
-            return totalEvents;
+            return totalReserves;
         }
     }
 }

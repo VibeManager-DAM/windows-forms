@@ -91,9 +91,11 @@
                           FontSize="16" FontWeight="Medium" FontFamily="/Fonts/Gabarito.ttf #Gabarito" Foreground="Black" BorderBrush="DarkGray" Height="28" Margin="0,5,0,0"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" > 
-                <Button Content="{DynamicResource Save}" Width="200" Style="{StaticResource StyledButton}"/>
-                <Button Content="{DynamicResource Delete}" Width="200" Style="{StaticResource StyledButton}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
+                <Button Content="{DynamicResource Save}" Width="200" Style="{StaticResource StyledButton}" Click="SaveUser"/>
+                <Button Content="{DynamicResource Delete}" Width="200" Style="{StaticResource StyledButton}" Click="DeleteUser"/>
+                <Button Content="Clear" Width="200" Style="{StaticResource StyledButton}" Click="ClearFields"/>
+
             </StackPanel>
         </StackPanel>
     </Grid>

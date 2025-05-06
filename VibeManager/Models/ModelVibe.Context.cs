@@ -29,6 +29,7 @@ namespace VibeManager.Models
         public virtual DbSet<EVENTS> EVENTS { get; set; }
         public virtual DbSet<ITEMS> ITEMS { get; set; }
         public virtual DbSet<MESSAGES> MESSAGES { get; set; }
+        public virtual DbSet<RESERVES> RESERVES { get; set; }
         public virtual DbSet<ROL> ROL { get; set; }
         public virtual DbSet<SPACES> SPACES { get; set; }
         public virtual DbSet<TICKETS> TICKETS { get; set; }

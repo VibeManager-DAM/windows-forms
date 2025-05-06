@@ -18,7 +18,7 @@ namespace VibeManager.Models
         public SPACES()
         {
             this.ITEMS = new HashSet<ITEMS>();
-            this.EVENTS = new HashSet<EVENTS>();
+            this.RESERVES = new HashSet<RESERVES>();
         }
     
         public int id { get; set; }
@@ -32,6 +32,6 @@ namespace VibeManager.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ITEMS> ITEMS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EVENTS> EVENTS { get; set; }
+        public virtual ICollection<RESERVES> RESERVES { get; set; }
     }
 }
