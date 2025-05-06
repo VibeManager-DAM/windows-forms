@@ -103,7 +103,7 @@ namespace VibeManager.Models.Controllers
                         fullname = user.Fullname,
                         email = user.Email,
                         id_rol = user.IdRol,
-                        password = "default" // Genera o gestiona de otra forma
+                        password = "default" 
                     };
 
                     Orm.db.USERS.Add(newUser);

@@ -9,6 +9,7 @@ using System.Windows.Shapes;
 using System.Windows.Input;
 using System.Windows.Media;
 using VibeManager.Data;
+using VibeManager.Models.Controllers;
 
 namespace VibeManager.Pages
 {
@@ -23,6 +24,7 @@ namespace VibeManager.Pages
         public MenuEvent()
         {
             InitializeComponent();
+            EventsDataGrid.ItemsSource = EventsOrm.GetAllEvents();
 
             // Configuración del mapa GMap
             GMapControl.MapProvider = GMapProviders.GoogleMap;
@@ -35,24 +37,19 @@ namespace VibeManager.Pages
             LoadSpaces();
         }
 
-        // Función para cargar los espacios de ejemplo (con latitud, longitud y capacidad)
         private void LoadSpaces()
         {
-            // Aquí cargarías los espacios desde la base de datos, pero por ahora los simulo
-            Spaces = new List<Space>
-            {
-                new Space { Name = "Espacio 1 - Sala A", Latitude = 41.3784, Longitude = 2.1925, Capacity = 50 },
-                new Space { Name = "Espacio 2 - Sala B", Latitude = 41.3851, Longitude = 2.1734, Capacity = 100 },
-                new Space { Name = "Espacio 3 - Sala C", Latitude = 41.4023, Longitude = 2.1919, Capacity = 200 }
-            };
+            Spaces = SpacesOrm.SelectAllSpaces();
 
-            // Agregar los espacios al ComboBox
+            SpaceComboBox.Items.Clear();
+
             foreach (var space in Spaces)
             {
                 SpaceComboBox.Items.Add(space.Name);
             }
 
-            // Agregar los marcadores de los espacios al mapa
+            GMapControl.Markers.Clear();
+
             foreach (var space in Spaces)
             {
                 var marker = new GMapMarker(new PointLatLng(space.Latitude, space.Longitude))
@@ -112,7 +109,6 @@ namespace VibeManager.Pages
             }
         }
 
-        // Función para encontrar el espacio más cercano al punto de clic
         private Space FindNearestSpace(PointLatLng clickedPoint)
         {
             Space nearestSpace = null;
@@ -193,35 +189,140 @@ namespace VibeManager.Pages
             GMapControl.Markers.Add(selectedMarker);
         }
 
-        // Evento para gestionar el checkbox de asientos disponibles
         private void SeatsAvailableCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            // Mostrar los campos para filas y columnas
-            SeatsPanel.Visibility = Visibility.Visible;
+            SeatsPanel.IsEnabled = true;
         }
 
         private void SeatsAvailableCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            // Ocultar los campos para filas y columnas
-            SeatsPanel.Visibility = Visibility.Collapsed;
+            SeatsPanel.IsEnabled = false;
         }
 
-        // Guardar evento
         private void SaveEventButton_Click(object sender, RoutedEventArgs e)
         {
-            string title = TitleTextBox.Text;
-            string description = DescriptionTextBox.Text;
-            DateTime date = DatePicker.SelectedDate.Value;
-            TimeSpan time = TimeSpan.Parse(((ComboBoxItem)TimeComboBox.SelectedItem).Content.ToString());
-            int capacity = int.Parse(CapacityTextBox.Text);
-            bool seatsAvailable = SeatsAvailableCheckBox.IsChecked.Value;
-            int rows = seatsAvailable ? int.Parse(RowsTextBox.Text) : 0;
-            int columns = seatsAvailable ? int.Parse(ColumnsTextBox.Text) : 0;
-            string selectedSpace = SpaceComboBox.SelectedItem?.ToString();
+            try
+            {
+                string title = TitleTextBox.Text;
+                string description = DescriptionTextBox.Text;
+                DateTime? selectedDate = DatePicker.SelectedDate;
+                if (!selectedDate.HasValue)
+                {
+                    MessageBox.Show("Selecciona una fecha.");
+                    return;
+                }
 
-            // Aquí puedes guardar los datos en la base de datos
-            MessageBox.Show("Evento guardado exitosamente.");
+                TimeSpan time = TimePickerControl.Value?.TimeOfDay ?? TimeSpan.Zero;
+                int capacity = int.Parse(CapacityTextBox.Text);
+                bool seatsAvailable = SeatsAvailableCheckBox.IsChecked == true;
+                int rows = seatsAvailable ? int.Parse(RowsTextBox.Text) : 0;
+                int columns = seatsAvailable ? int.Parse(ColumnsTextBox.Text) : 0;
+                string selectedSpace = SpaceComboBox.SelectedItem?.ToString();
+
+                if (string.IsNullOrEmpty(selectedSpace))
+                {
+                    MessageBox.Show("Selecciona un espacio.");
+                    return;
+                }
+
+                Event eventToSave;
+
+                if (EventsDataGrid.SelectedItem is Event selectedEvent)
+                {
+                    // Modo edición
+                    eventToSave = selectedEvent;
+                }
+                else
+                {
+                    // Nuevo evento
+                    eventToSave = new Event();
+                }
+
+                eventToSave.Title = title;
+                eventToSave.Description = description;
+                eventToSave.Date = selectedDate.Value;
+                eventToSave.Time = time;
+                eventToSave.Capacity = capacity;
+                eventToSave.Seats = seatsAvailable;
+                eventToSave.NumRows = rows;
+                eventToSave.NumColumns = columns;
+
+                bool success = EventsOrm.CreateOrUpdateEvent(eventToSave, selectedSpace);
+                if (success)
+                {
+                    MessageBox.Show("Evento guardado correctamente.");
+                    EventsDataGrid.ItemsSource = EventsOrm.GetAllEvents();
+                    ClearFields();
+                }
+                else
+                {
+                    MessageBox.Show("Error al guardar el evento.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void ClearFieldsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearFields();
+        }
+
+        private void ClearFields()
+        {
+            TitleTextBox.Clear();
+            DescriptionTextBox.Clear();
+            DatePicker.SelectedDate = null;
+            TimePickerControl.Value = null;
+            CapacityTextBox.Clear();
+            SeatsAvailableCheckBox.IsChecked = false;
+            RowsTextBox.Clear();
+            ColumnsTextBox.Clear();
+            SpaceComboBox.SelectedIndex = -1;
+            EventsDataGrid.UnselectAll();
+        }
+
+        private void DeleteEventButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EventsDataGrid.SelectedItem is Event selected)
+            {
+                bool deleted = EventsOrm.DeleteEventById(selected.Id);
+                if (deleted)
+                {
+                    MessageBox.Show("Evento eliminado correctamente.");
+                    EventsDataGrid.ItemsSource = EventsOrm.GetAllEvents();
+                    ClearFields();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el evento.");
+                }
+            }
+        }
+
+        private void EventsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (EventsDataGrid.SelectedItem is Event selectedEvent)
+            {
+                TitleTextBox.Text = selectedEvent.Title;
+                DescriptionTextBox.Text = selectedEvent.Description;
+                DatePicker.SelectedDate = selectedEvent.Date;
+                TimePickerControl.Value = DateTime.Today.Add(selectedEvent.Time);
+                CapacityTextBox.Text = selectedEvent.Capacity.ToString();
+                SeatsAvailableCheckBox.IsChecked = selectedEvent.Seats;
+                RowsTextBox.Text = selectedEvent.NumRows.ToString();
+                ColumnsTextBox.Text = selectedEvent.NumColumns.ToString();
+                SpaceComboBox.SelectedItem = selectedEvent.SpaceName;
+
+                var space = Spaces.Find(s => s.Name == selectedEvent.SpaceName);
+                if (space != null)
+                {
+                    GMapControl.Position = new PointLatLng(space.Latitude, space.Longitude);
+                    UpdateMarkers(space);
+                }
+            }
         }
     }
-
 }

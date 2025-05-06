@@ -5,68 +5,94 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VibeManager.Pages"
              mc:Ignorable="d" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
              d:DesignHeight="500" d:DesignWidth="800">
 
     <Grid>
-        <!-- Definición de columnas para el mapa y el formulario -->
+        <!-- Columnas principales -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <!-- Columna para el formulario -->
+            <ColumnDefinition Width="500"/>
+            <!-- Columna izquierda: DataGrid + formulario -->
             <ColumnDefinition Width="*"/>
-            <!-- Columna para el mapa -->
+            <!-- Columna derecha: mapa -->
         </Grid.ColumnDefinitions>
 
-        <!-- Contenedor para el formulario -->
+        <!-- Panel izquierdo -->
         <StackPanel Grid.Column="0" Margin="10">
-            <!-- Título del Evento -->
-            <Label Content="Título:" HorizontalAlignment="Left"/>
-            <TextBox x:Name="TitleTextBox" Width="400" Margin="0,5" />
 
-            <!-- Descripción del Evento -->
-            <Label Content="Descripción:" HorizontalAlignment="Left"/>
-            <TextBox x:Name="DescriptionTextBox" Width="400" Height="80" Margin="0,5" />
+            <!-- DataGrid de eventos -->
+            <DataGrid x:Name="EventsDataGrid"
+                  AutoGenerateColumns="False"
+                  Height="150"
+                  Margin="0,0,0,10"
+                  SelectionChanged="EventsDataGrid_SelectionChanged"
+                  IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Título" Binding="{Binding Title}" Width="*"/>
+                    <DataGridTextColumn Header="Fecha" Binding="{Binding Date}" Width="100"/>
+                    <DataGridTextColumn Header="Hora" Binding="{Binding Time}" Width="100"/>
+                    <DataGridTextColumn Header="Capacidad" Binding="{Binding Capacity}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-            <!-- Fecha del Evento -->
-            <Label Content="Fecha:" HorizontalAlignment="Left"/>
-            <DatePicker x:Name="DatePicker" Width="200" Margin="0,5" />
+            <!-- Formulario -->
+            <Label Content="Título:" Foreground="#39514F"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
+            <TextBox x:Name="TitleTextBox" />
 
-            <!-- Hora del Evento -->
-            <Label Content="Hora:" HorizontalAlignment="Left"/>
-            <ComboBox x:Name="TimeComboBox" Width="200" Margin="0,5">
-                <ComboBoxItem>08:00</ComboBoxItem>
-                <ComboBoxItem>09:00</ComboBoxItem>
-                <ComboBoxItem>10:00</ComboBoxItem>
-                <!-- Más horas aquí -->
-            </ComboBox>
+            <Label Content="Descripción:" />
+            <TextBox x:Name="DescriptionTextBox" Height="60"/>
 
-            <!-- Capacidad -->
-            <Label Content="Capacidad:" HorizontalAlignment="Left"/>
-            <TextBox x:Name="CapacityTextBox" Width="100" Margin="0,5" />
+            <Label Content="Fecha:" />
+            <DatePicker x:Name="DatePicker" />
 
-            <!-- Checkbox para asientos disponibles -->
-            <CheckBox x:Name="SeatsAvailableCheckBox" Content="¿Evento con asientos disponibles?" HorizontalAlignment="Left" Margin="0,5" Checked="SeatsAvailableCheckBox_Checked" Unchecked="SeatsAvailableCheckBox_Unchecked"/>
+            <Label Content="Hora:" />
+            <xctk:TimePicker
+                Name="TimePickerControl"
+                Format="Custom"
+                FormatString="HH:mm"
+                TextAlignment="Left"
+                Value="{Binding SelectedTime, Mode=TwoWay}" 
+                />
 
-            <!-- Número de filas y columnas (solo si el checkbox está marcado) -->
-            <StackPanel x:Name="SeatsPanel" Orientation="Horizontal" Visibility="Collapsed" Margin="0,5">
-                <Label Content="Filas:" HorizontalAlignment="Left"/>
-                <TextBox x:Name="RowsTextBox" Width="50" Margin="5,0"/>
-                <Label Content="Columnas:" HorizontalAlignment="Left"/>
-                <TextBox x:Name="ColumnsTextBox" Width="50" Margin="5,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0" >
+                <Label Content="Capacidad:" />
+                <CheckBox x:Name="SeatsAvailableCheckBox" Content="¿Evento con asientos disponibles?" 
+                          Checked="SeatsAvailableCheckBox_Checked" 
+                          Unchecked="SeatsAvailableCheckBox_Unchecked" Margin="200,8,0,0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0" >
+                <TextBox x:Name="CapacityTextBox" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                <StackPanel x:Name="SeatsPanel" Orientation="Horizontal" Margin="150,0,0,0">
+                    <Label Content="Filas:"/>
+                    <TextBox x:Name="RowsTextBox" Width="50" Margin="5,0"/>
+                    <Label Content="Columnas:"/>
+                    <TextBox x:Name="ColumnsTextBox" Width="50" Margin="5,0"/>
+                </StackPanel>
             </StackPanel>
 
             <!-- Seleccionar espacio -->
-            <Label Content="Seleccionar Espacio:" HorizontalAlignment="Left"/>
-            <ComboBox x:Name="SpaceComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,260,10,0" Width="400" Grid.Row="6"/>
+            <Label Content="Seleccionar Espacio:" />
+            <ComboBox x:Name="SpaceComboBox" Width="400"/>
 
-            <!-- Botón para guardar -->
-            <Button Content="Guardar Evento" Width="120" Height="40" Margin="0,10" Click="SaveEventButton_Click" />
+            <!-- Botones -->
+            <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Center">
+                <Button Content="Guardar" Width="100" Margin="5" Click="SaveEventButton_Click"/>
+                <Button Content="Eliminar" Width="100" Margin="5" Click="DeleteEventButton_Click"/>
+                <Button Content="Limpiar" Width="100" Margin="5" Click="ClearFieldsButton_Click"/>
+            </StackPanel>
         </StackPanel>
 
-        <!-- Separador entre el formulario y el mapa -->
-        <Separator Grid.Column="1" Width="10" Margin="5,0"/>
-
-        <!-- Mapa en la parte derecha -->
-        <gmap:GMapControl x:Name="GMapControl" Grid.Column="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseLeftButtonDown="GMapControl_MouseLeftButtonDown" />
+        <!-- Panel derecho: mapa -->
+        <gmap:GMapControl x:Name="GMapControl" Grid.Column="1"
+                      Margin="10"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      MouseLeftButtonDown="GMapControl_MouseLeftButtonDown"/>
     </Grid>
+
 </UserControl>
