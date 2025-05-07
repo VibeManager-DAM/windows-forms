@@ -11,16 +11,21 @@ namespace VibeManager.Models.Controllers
 {
     public static class UsersOrm
     {
-        public static int? Login(string username, string password)
+        public static UserSession Login(string username, string password)
         {
-            int? idRol = null;
-
             try
             {
-                idRol = Orm.db.USERS
-                    .Where(u => u.fullname == username || u.email == username && u.password == password)
-                    .Select(u => u.id_rol)
+                var user = Orm.db.USERS
+                    .Where(u => (u.fullname == username || u.email == username) && u.password == password)
+                    .Select(u => new UserSession
+                    {
+                        Id = u.id,
+                        RoleId = u.id_rol,
+                        FullName = u.fullname
+                    })
                     .FirstOrDefault();
+
+                return user;
             }
             catch (SqlException sqlException)
             {
@@ -30,8 +35,10 @@ namespace VibeManager.Models.Controllers
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
-            return idRol;
+
+            return null;
         }
+
 
         public static int getTotalUsers()
         {

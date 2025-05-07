@@ -41,6 +41,7 @@ namespace VibeManager.Models.Controllers
                 events = (from e in Orm.db.EVENTS
                           join r in Orm.db.RESERVES on e.id equals r.id_event
                           join s in Orm.db.SPACES on r.id_space equals s.id
+                          where e.id_organizer == App.CurrentUser.Id
                           select new Event
                           {
                               Id = e.id,
@@ -67,25 +68,42 @@ namespace VibeManager.Models.Controllers
             return events;
         }
 
+
         public static bool DeleteEventById(int eventId)
         {
             try
             {
-                // 1. Eliminar TICKETS relacionados
+                // 1. Eliminar MENSAJES de los CHATS asociados al evento
+                var chats = Orm.db.CHAT.Where(c => c.id_event == eventId).ToList();
+                var chatIds = chats.Select(c => c.id).ToList();
+
+                var mensajes = Orm.db.MESSAGES.Where(m => chatIds.Contains(m.id_chat)).ToList();
+                if (mensajes.Any())
+                {
+                    Orm.db.MESSAGES.RemoveRange(mensajes);
+                }
+
+                // 2. Eliminar los CHATS del evento
+                if (chats.Any())
+                {
+                    Orm.db.CHAT.RemoveRange(chats);
+                }
+
+                // 3. Eliminar TICKETS relacionados
                 var tickets = Orm.db.TICKETS.Where(t => t.id_event == eventId).ToList();
                 if (tickets.Any())
                 {
                     Orm.db.TICKETS.RemoveRange(tickets);
                 }
 
-                // 2. Eliminar RESERVES relacionados
-                var reserve = Orm.db.RESERVES.FirstOrDefault(r => r.id_event == eventId);
-                if (reserve != null)
+                // 4. Eliminar RESERVES relacionados
+                var reserves = Orm.db.RESERVES.Where(r => r.id_event == eventId).ToList();
+                if (reserves.Any())
                 {
-                    Orm.db.RESERVES.Remove(reserve);
+                    Orm.db.RESERVES.RemoveRange(reserves);
                 }
 
-                // 3. Eliminar el EVENTO
+                // 5. Finalmente, eliminar el EVENTO
                 var evento = Orm.db.EVENTS.FirstOrDefault(e => e.id == eventId);
                 if (evento != null)
                 {
@@ -106,6 +124,7 @@ namespace VibeManager.Models.Controllers
                 return false;
             }
         }
+
 
         public static bool CreateOrUpdateEvent(Event evt, string spaceName)
         {
@@ -132,7 +151,7 @@ namespace VibeManager.Models.Controllers
                         seats = evt.Seats,
                         num_rows = evt.NumRows,
                         num_columns = evt.NumColumns,
-                        id_organizer = 1, // ID del organizador fijo (ajústalo según el contexto),
+                        id_organizer = App.CurrentUser.Id, 
                         price = 0
                     };
 

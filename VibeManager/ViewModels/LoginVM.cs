@@ -20,19 +20,30 @@ namespace VibeManager.ViewModels
 
         private void Login(object parameter)
         {
-            int? idRol = UsersOrm.Login(Username, Password);
-            if (idRol.Equals(3)) // admin
+            var user = UsersOrm.Login(Username, Password);
+
+            if (user == null)
+            {
+                MessageBox.Show("Usuario o contraseña incorrectos");
+                return;
+            }
+
+            // Guardar sesión
+            App.CurrentUser = user;
+
+            if (user.RoleId == 3) // admin
             {
                 _mainViewModel.ShowDashboard();
             }
-            else if (idRol.Equals(1)) // organizer
+            else if (user.RoleId == 1) // organizer
             {
                 _mainViewModel.ShowEvents();
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrectos");
+                MessageBox.Show("Rol no autorizado");
             }
         }
+
     }
 }

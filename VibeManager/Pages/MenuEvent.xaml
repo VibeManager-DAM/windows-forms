@@ -9,6 +9,33 @@
              xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
              d:DesignHeight="500" d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <Style x:Key="StyledButton" TargetType="Button">
+            <Setter Property="Background" Value="#03201D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="/Fonts/Gabarito.ttf #Gabarito"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150" Height="40"
+                        CornerRadius="20"
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#39514F"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <!-- Columnas principales -->
         <Grid.ColumnDefinitions>
@@ -43,13 +70,25 @@
                     FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
             <TextBox x:Name="TitleTextBox" />
 
-            <Label Content="Descripción:" />
+            <Label Content="Descripción:" 
+                   Foreground="#39514F"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
             <TextBox x:Name="DescriptionTextBox" Height="60"/>
 
-            <Label Content="Fecha:" />
+            <Label Content="Fecha:" 
+                   Foreground="#39514F"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
             <DatePicker x:Name="DatePicker" />
 
-            <Label Content="Hora:" />
+            <Label Content="Hora:"
+                   Foreground="#39514F"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
             <xctk:TimePicker
                 Name="TimePickerControl"
                 Format="Custom"
@@ -59,31 +98,51 @@
                 />
 
             <StackPanel Orientation="Horizontal" Margin="0" >
-                <Label Content="Capacidad:" />
+                <Label Content="Capacidad:"
+                       Foreground="#39514F"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
                 <CheckBox x:Name="SeatsAvailableCheckBox" Content="¿Evento con asientos disponibles?" 
                           Checked="SeatsAvailableCheckBox_Checked" 
-                          Unchecked="SeatsAvailableCheckBox_Unchecked" Margin="200,8,0,0"/>
+                          Unchecked="SeatsAvailableCheckBox_Unchecked" Margin="90,8,0,0"
+                          Foreground="#39514F"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0" >
                 <TextBox x:Name="CapacityTextBox" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0"/>
-                <StackPanel x:Name="SeatsPanel" Orientation="Horizontal" Margin="150,0,0,0">
-                    <Label Content="Filas:"/>
+                <StackPanel x:Name="SeatsPanel" Orientation="Horizontal" Margin="100,0,0,0" IsEnabled="False">
+                    <Label Content="Filas:"
+                           Foreground="#39514F"
+                            FontSize="18"
+                            FontWeight="Medium"
+                            FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
                     <TextBox x:Name="RowsTextBox" Width="50" Margin="5,0"/>
-                    <Label Content="Columnas:"/>
+                    <Label Content="Columnas:"
+                           Foreground="#39514F"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
                     <TextBox x:Name="ColumnsTextBox" Width="50" Margin="5,0"/>
                 </StackPanel>
             </StackPanel>
 
             <!-- Seleccionar espacio -->
-            <Label Content="Seleccionar Espacio:" />
-            <ComboBox x:Name="SpaceComboBox" Width="400"/>
+            <Label Content="Seleccionar Espacio:"
+                   Foreground="#39514F"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
+            <ComboBox x:Name="SpaceComboBox" Width="400" IsEnabled="False"/>
 
             <!-- Botones -->
-            <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Center">
-                <Button Content="Guardar" Width="100" Margin="5" Click="SaveEventButton_Click"/>
-                <Button Content="Eliminar" Width="100" Margin="5" Click="DeleteEventButton_Click"/>
-                <Button Content="Limpiar" Width="100" Margin="5" Click="ClearFieldsButton_Click"/>
+            <StackPanel Orientation="Horizontal" Margin="0,20" HorizontalAlignment="Center">
+                <Button Content="Guardar" Width="150" Margin="5" Style="{StaticResource StyledButton}" Click="SaveEventButton_Click"/>
+                <Button Content="Eliminar" Width="150" Margin="5" Style="{StaticResource StyledButton}"  Click="DeleteEventButton_Click"/>
+                <Button Content="Limpiar" Width="150" Margin="5" Style="{StaticResource StyledButton}" Click="ClearFieldsButton_Click"/>
             </StackPanel>
         </StackPanel>
 

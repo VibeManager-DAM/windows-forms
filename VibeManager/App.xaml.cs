@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using VibeManager.Data;
 
 namespace VibeManager
 {
@@ -13,6 +14,8 @@ namespace VibeManager
     /// </summary>
     public partial class App : Application
     {
+        public static UserSession CurrentUser { get; set; }
+
         public void ChangeLanguage(string languageCode)
         {
             string dictionaryPath = $"Languages/strings.{languageCode}.xaml";

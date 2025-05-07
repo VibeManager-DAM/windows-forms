@@ -124,6 +124,7 @@
     <Compile Include="Data\Role.cs" />
     <Compile Include="Data\Space.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserSession.cs" />
     <Compile Include="Models\CHAT.cs">
       <DependentUpon>ModelVibe.tt</DependentUpon>
     </Compile>
