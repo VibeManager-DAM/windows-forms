@@ -22,17 +22,34 @@ using VibeManager.Models.Controllers;
 namespace VibeManager.Pages
 {
     /// <summary>
-    /// Lógica de interacción para Users.xaml
+    /// Lógica de interacción para la página de usuarios (Users.xaml).
+    /// Permite ver, crear, modificar y eliminar usuarios, además de filtrarlos y paginarlos.
     /// </summary>
     public partial class Users : UserControl, INotifyPropertyChanged
     {
-        private const int PageSize = 10;
-        private int _currentPage = 1;
+        private const int PageSize = 10; // Número de usuarios por página
+        private int _currentPage = 1; // Página actual
+
+        /// <summary>
+        /// Lista de todos los usuarios.
+        /// </summary>
         public ObservableCollection<User> ListUsers { get; set; }
+
+        /// <summary>
+        /// Lista de usuarios que se muestran en la página actual, después de aplicar filtros y paginación.
+        /// </summary>
         public ObservableCollection<User> PagedUsers { get; set; } = new ObservableCollection<User>();
+
+        /// <summary>
+        /// Lista de roles disponibles para los usuarios.
+        /// </summary>
         public ObservableCollection<Role> Roles { get; set; }
 
         private string _searchText;
+
+        /// <summary>
+        /// Texto de búsqueda para filtrar los usuarios por nombre o email.
+        /// </summary>
         public string SearchText
         {
             get => _searchText;
@@ -40,12 +57,19 @@ namespace VibeManager.Pages
         }
 
         private User _selectedUser;
+
+        /// <summary>
+        /// Usuario actualmente seleccionado para editar.
+        /// </summary>
         public User SelectedUser
         {
             get => _selectedUser;
             set { _selectedUser = value; OnPropertyChanged(); }
         }
 
+        /// <summary>
+        /// Inicializa la página de usuarios y carga los datos necesarios.
+        /// </summary>
         public Users()
         {
             InitializeComponent();
@@ -53,6 +77,9 @@ namespace VibeManager.Pages
             LoadData();
         }
 
+        /// <summary>
+        /// Carga todos los usuarios y roles desde la base de datos.
+        /// </summary>
         private void LoadData()
         {
             ListUsers = new ObservableCollection<User>(UsersOrm.GetAllUsers());
@@ -64,8 +91,9 @@ namespace VibeManager.Pages
             FilterUsers();
         }
 
-
-
+        /// <summary>
+        /// Filtra y pagina los usuarios según el texto de búsqueda y la página actual.
+        /// </summary>
         private void FilterUsers()
         {
             var filteredUsers = string.IsNullOrWhiteSpace(SearchText) ? ListUsers :
@@ -78,12 +106,22 @@ namespace VibeManager.Pages
             }
         }
 
+        /// <summary>
+        /// Evento que se dispara cuando una propiedad cambia, para notificar a la UI.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notifica a la UI que una propiedad ha cambiado.
+        /// </summary>
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Cambia a la página anterior, si es posible, y recarga los usuarios.
+        /// </summary>
         private void PreviousPage(object sender, RoutedEventArgs e)
         {
             if (_currentPage > 1)
@@ -93,6 +131,9 @@ namespace VibeManager.Pages
             }
         }
 
+        /// <summary>
+        /// Cambia a la siguiente página, si es posible, y recarga los usuarios.
+        /// </summary>
         private void NextPage(object sender, RoutedEventArgs e)
         {
             if ((_currentPage * PageSize) < ListUsers.Count)
@@ -101,6 +142,11 @@ namespace VibeManager.Pages
                 FilterUsers();
             }
         }
+
+        /// <summary>
+        /// Guarda un nuevo usuario o actualiza uno existente.
+        /// Verifica que el nombre y el email estén completos antes de guardar.
+        /// </summary>
         private void SaveUser(object sender, RoutedEventArgs e)
         {
             if (SelectedUser == null || string.IsNullOrWhiteSpace(SelectedUser.Fullname) || string.IsNullOrWhiteSpace(SelectedUser.Email))
@@ -115,7 +161,7 @@ namespace VibeManager.Pages
             {
                 MessageBox.Show("Usuario guardado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadData();
-                SelectedUser = new User();
+                SelectedUser = new User(); // Resetea el usuario seleccionado
                 OnPropertyChanged(nameof(SelectedUser));
             }
             else
@@ -124,6 +170,10 @@ namespace VibeManager.Pages
             }
         }
 
+        /// <summary>
+        /// Elimina el usuario seleccionado.
+        /// Pide confirmación antes de proceder con la eliminación.
+        /// </summary>
         private void DeleteUser(object sender, RoutedEventArgs e)
         {
             if (SelectedUser == null || SelectedUser.Id == 0)
@@ -141,7 +191,7 @@ namespace VibeManager.Pages
                 {
                     MessageBox.Show("Usuario eliminado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                     LoadData();
-                    SelectedUser = new User();
+                    SelectedUser = new User(); // Resetea el usuario seleccionado
                     OnPropertyChanged(nameof(SelectedUser));
                 }
                 else
@@ -151,6 +201,9 @@ namespace VibeManager.Pages
             }
         }
 
+        /// <summary>
+        /// Limpia los campos de edición de usuario.
+        /// </summary>
         private void ClearFields(object sender, RoutedEventArgs e)
         {
             SelectedUser = new User();

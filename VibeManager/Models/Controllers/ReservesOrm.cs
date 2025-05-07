@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace VibeManager.Models.Controllers
 {
+    /// <summary>
+    /// Proporciona métodos para operar sobre las reservas en la base de datos.
+    /// </summary>
     public class ReservesOrm
     {
+        /// <summary>
+        /// Obtiene el número total de reservas registradas en la base de datos.
+        /// </summary>
+        /// <returns>El número total de reservas como un entero.</returns>
         public static int getTotalReserves()
         {
             int totalReserves = 0;

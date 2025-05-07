@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -10,35 +9,46 @@ using VibeManager.Data;
 namespace VibeManager
 {
     /// <summary>
-    /// Lógica de interacción para App.xaml
+    /// Clase principal de la aplicación que gestiona el ciclo de vida de la misma.
+    /// Incluye funcionalidades para cambiar el idioma de la interfaz de usuario.
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Propiedad estática que almacena la sesión del usuario actual.
+        /// </summary>
         public static UserSession CurrentUser { get; set; }
 
+        /// <summary>
+        /// Cambia el idioma de la interfaz de usuario de la aplicación.
+        /// Carga un nuevo diccionario de recursos basado en el código de idioma proporcionado.
+        /// </summary>
+        /// <param name="languageCode">El código del idioma (por ejemplo, "en" para inglés, "es" para español).</param>
         public void ChangeLanguage(string languageCode)
         {
             string dictionaryPath = $"Languages/strings.{languageCode}.xaml";
 
+            // Cargar el nuevo diccionario de recursos
             ResourceDictionary newDictionary = new ResourceDictionary
             {
                 Source = new Uri(dictionaryPath, UriKind.Relative)
             };
 
-            // Manté la resta de recursos i només substitueix el d'idioma
+            // Mantener el resto de recursos y solo sustituir el de idioma
             var existingDictionaries = Application.Current.Resources.MergedDictionaries
                                          .Where(d => !d.Source.OriginalString.Contains("Languages/strings"))
                                          .ToList();
 
+            // Limpiar los diccionarios de recursos existentes
             Application.Current.Resources.MergedDictionaries.Clear();
 
-            // Reafegir els diccionaris existents
+            // Volver a añadir los diccionarios existentes
             foreach (var dict in existingDictionaries)
             {
                 Application.Current.Resources.MergedDictionaries.Add(dict);
             }
 
-            // Afegir el nou diccionari d'idioma
+            // Añadir el nuevo diccionario de idioma
             Application.Current.Resources.MergedDictionaries.Add(newDictionary);
         }
     }

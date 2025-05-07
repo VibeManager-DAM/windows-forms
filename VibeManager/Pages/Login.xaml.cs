@@ -17,15 +17,24 @@ using VibeManager.ViewModels;
 namespace VibeManager.Pages
 {
     /// <summary>
-    /// Lógica de interacción para Login.xaml
+    /// Representa la vista de inicio de sesión de la aplicación.
     /// </summary>
     public partial class Login : UserControl
     {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Login"/>.
+        /// </summary>
         public Login()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Maneja el evento <c>PasswordChanged</c> del <see cref="PasswordBox"/>, 
+        /// actualizando la propiedad <c>Password</c> del <see cref="LoginVM"/>.
+        /// </summary>
+        /// <param name="sender">El control <see cref="PasswordBox"/> que generó el evento.</param>
+        /// <param name="e">Datos del evento <see cref="RoutedEventArgs"/>.</param>
         private void txtPass_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (DataContext is LoginVM viewModel)

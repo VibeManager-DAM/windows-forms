@@ -14,6 +14,12 @@
     <sys:String x:Key="Menu">Menu</sys:String>
 
     <sys:String x:Key="Dashboard">Dashboard</sys:String>
+    <sys:String x:Key="Notifications">Notifications</sys:String>
+    <sys:String x:Key="GeneralSummary">General Summary</sys:String>
+    <sys:String x:Key="TotalUsers">Registered users:</sys:String>
+    <sys:String x:Key="TotalEvents">Programmed events:</sys:String>
+    <sys:String x:Key="TotalReserves">Reservations made:</sys:String>
+    <sys:String x:Key="ActivityChart">Activity chart</sys:String>
 
     <sys:String x:Key="Users">Users</sys:String>
     <sys:String x:Key="SearchUser">Search User</sys:String>
@@ -26,6 +32,7 @@
     <sys:String x:Key="Next">Next</sys:String>
 
     <sys:String x:Key="Spaces">Spaces</sys:String>
+    <sys:String x:Key="SearchSpace">Search spaces</sys:String>
 
 
     <sys:String x:Key="Username">Username</sys:String>
@@ -34,50 +41,16 @@
 
     <sys:String x:Key="Hour">Hour</sys:String>
     <sys:String x:Key="Event">Event</sys:String>
-
-
-    <sys:String x:Key="EventsToday">Events Today</sys:String>
-    <sys:String x:Key="TotalSuperAdmins">SuperAdmins</sys:String>
-    <sys:String x:Key="TotalAdmins">Admins</sys:String>
-    <sys:String x:Key="TotalMaintenanceUsers">Maintenance</sys:String>
-    <sys:String x:Key="TotalAppUsers">App</sys:String>
-    <sys:String x:Key="TotalArtists">Artists</sys:String>
-    <sys:String x:Key="TotalSpaces">Spaces</sys:String>
-    <sys:String x:Key="TotalMatches">Matches</sys:String>
-    <sys:String x:Key="TotalEventsDone">Events Done</sys:String>
-    <sys:String x:Key="UserRegistrationsperMonth">User Registrations per Month</sys:String>
-
-    
-    
-    
-    <sys:String x:Key="Rating">Rating</sys:String>
-    <sys:String x:Key="Capacity">Capacity</sys:String>
-    <sys:String x:Key="Genre">Genre</sys:String>
+        
     <sys:String x:Key="Clear">Clear</sys:String>
 
-    <!-- FAQ TRANSLATIONS -->
-    <sys:String x:Key="Faq1Question">How can I register as an artist?</sys:String>
-    <sys:String x:Key="Faq1Answer">You can sign up through the app by selecting the 'Artist' role and completing your profile.</sys:String>
-
-    <sys:String x:Key="Faq2Question">How do venues find artists?</sys:String>
-    <sys:String x:Key="Faq2Answer">Venues can search for artists based on genre, location, and availability through the platform.</sys:String>
-
-    <sys:String x:Key="Faq3Question">Can I apply for multiple events at the same time?</sys:String>
-    <sys:String x:Key="Faq3Answer">Yes, you can apply to multiple events, and venues will review your application.</sys:String>
-
-    <sys:String x:Key="Faq4Question">How are matches between artists and venues made?</sys:String>
-    <sys:String x:Key="Faq4Answer">The system suggests matches based on preferences, availability, and previous ratings.</sys:String>
-
-    <sys:String x:Key="Faq5Question">What happens after an artist and a venue match?</sys:String>
-    <sys:String x:Key="Faq5Answer">Once a match is confirmed, a contract is generated, and details like schedule and payment are arranged.</sys:String>
-
-    <sys:String x:Key="Faq6Question">Can I rate an event or an artist?</sys:String>
-    <sys:String x:Key="Faq6Answer">Yes, both artists and venues can leave ratings after an event to build trust within the platform.</sys:String>
-
-    <sys:String x:Key="Faq7Question">How do I report an issue or dispute?</sys:String>
-    <sys:String x:Key="Faq7Answer">You can report an issue through the 'Support' section in the app, where an admin will review your case.</sys:String>
-
-    <sys:String x:Key="Faq8Question">Is there a way to communicate with venues or artists?</sys:String>
-    <sys:String x:Key="Faq8Answer">Yes, you can chat with venues or artists through the in-app messaging system once a match is established.</sys:String>
+    <sys:String x:Key="Title">Title</sys:String>
+    <sys:String x:Key="Description">Description</sys:String>
+    <sys:String x:Key="Date">Date</sys:String>
+    <sys:String x:Key="Capacity">Capacity</sys:String>
+    <sys:String x:Key="SeatsAvaliable">Event with available seats?</sys:String>
+    <sys:String x:Key="Row">Rows</sys:String>
+    <sys:String x:Key="Column">Columns</sys:String>
+    <sys:String x:Key="ChooseSpace">Choose space</sys:String>
 
 </ResourceDictionary>

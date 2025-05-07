@@ -10,6 +10,11 @@ namespace VibeManager.Models.Controllers
 {
     public class EventsOrm
     {
+
+        /// <summary>
+        /// Obtiene el número total de eventos registrados en la base de datos.
+        /// </summary>
+        /// <returns>El número total de eventos como un entero.</returns>
         public static int getTotalEvents()
         {
             int totalEvents = 0;
@@ -32,6 +37,10 @@ namespace VibeManager.Models.Controllers
             return totalEvents;
         }
 
+        /// <summary>
+        /// Recupera todos los eventos asociados al usuario actual que actúa como organizador.
+        /// </summary>
+        /// <returns>Una lista de objetos <see cref="Event"/> con la información de cada evento.</returns>
         public static List<Event> GetAllEvents()
         {
             List<Event> events = new List<Event>();
@@ -68,7 +77,11 @@ namespace VibeManager.Models.Controllers
             return events;
         }
 
-
+        /// <summary>
+        /// Elimina un evento y todas sus relaciones en la base de datos, incluyendo mensajes, chats, tickets y reservas.
+        /// </summary>
+        /// <param name="eventId">El ID del evento que se desea eliminar.</param>
+        /// <returns><c>true</c> si la operación fue exitosa; de lo contrario, <c>false</c>.</returns>
         public static bool DeleteEventById(int eventId)
         {
             try
@@ -125,7 +138,12 @@ namespace VibeManager.Models.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Crea un nuevo evento o actualiza uno existente en la base de datos, y gestiona su relación con un espacio.
+        /// </summary>
+        /// <param name="evt">El objeto <see cref="Event"/> que contiene los datos del evento.</param>
+        /// <param name="spaceName">El nombre del espacio asociado al evento.</param>
+        /// <returns><c>true</c> si la operación fue exitosa; de lo contrario, <c>false</c>.</returns>
         public static bool CreateOrUpdateEvent(Event evt, string spaceName)
         {
             try

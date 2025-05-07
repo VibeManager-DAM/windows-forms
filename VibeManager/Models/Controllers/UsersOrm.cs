@@ -9,8 +9,17 @@ using VibeManager.Pages;
 
 namespace VibeManager.Models.Controllers
 {
+    /// <summary>
+    /// Proporciona métodos para autenticar, gestionar y manipular usuarios en la base de datos.
+    /// </summary>
     public static class UsersOrm
     {
+        /// <summary>
+        /// Autentica a un usuario utilizando su nombre completo o correo electrónico y contraseña.
+        /// </summary>
+        /// <param name="username">Nombre completo o correo electrónico del usuario.</param>
+        /// <param name="password">Contraseña del usuario.</param>
+        /// <returns>Una instancia de <see cref="UserSession"/> si las credenciales son válidas; de lo contrario, <c>null</c>.</returns>
         public static UserSession Login(string username, string password)
         {
             try
@@ -39,7 +48,10 @@ namespace VibeManager.Models.Controllers
             return null;
         }
 
-
+        /// <summary>
+        /// Obtiene el número total de usuarios registrados en la base de datos.
+        /// </summary>
+        /// <returns>Un número entero que representa el total de usuarios.</returns>
         public static int getTotalUsers()
         {
             int totalUsers = 0;
@@ -62,6 +74,10 @@ namespace VibeManager.Models.Controllers
             return totalUsers;
         }
 
+        /// <summary>
+        /// Recupera todos los usuarios desde la base de datos con información detallada, incluyendo rol.
+        /// </summary>
+        /// <returns>Una lista de objetos <see cref="User"/>.</returns>
         public static List<User> GetAllUsers()
         {
             try
@@ -90,6 +106,10 @@ namespace VibeManager.Models.Controllers
             return new List<User>();
         }
 
+        /// <summary>
+        /// Obtiene una lista de roles únicos utilizados por los usuarios.
+        /// </summary>
+        /// <returns>Una lista de objetos <see cref="Role"/> con roles distintos.</returns>
         public static List<Role> GetDistinctRolesFromUsers()
         {
             return GetAllUsers()
@@ -99,6 +119,11 @@ namespace VibeManager.Models.Controllers
                 .ToList();
         }
 
+        /// <summary>
+        /// Crea un nuevo usuario o actualiza uno existente en la base de datos.
+        /// </summary>
+        /// <param name="user">El objeto <see cref="User"/> con la información del usuario a guardar.</param>
+        /// <returns><c>true</c> si la operación fue exitosa; en caso contrario, <c>false</c>.</returns>
         public static bool SaveUser(User user)
         {
             try
@@ -141,6 +166,11 @@ namespace VibeManager.Models.Controllers
             }
         }
 
+        /// <summary>
+        /// Elimina un usuario de la base de datos, junto con sus mensajes, chats, tickets, eventos y reservas relacionados.
+        /// </summary>
+        /// <param name="id">ID del usuario a eliminar.</param>
+        /// <returns><c>true</c> si la eliminación fue exitosa; en caso contrario, <c>false</c>.</returns>
         public static bool DeleteUser(int id)
         {
             try

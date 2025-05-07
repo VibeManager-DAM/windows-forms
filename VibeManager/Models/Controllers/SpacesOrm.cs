@@ -8,8 +8,15 @@ using VibeManager.Data;
 
 namespace VibeManager.Models.Controllers
 {
+    /// <summary>
+    /// Proporciona métodos de acceso y manipulación de los espacios registrados en la base de datos.
+    /// </summary>
     public class SpacesOrm
     {
+        /// <summary>
+        /// Recupera todos los espacios disponibles desde la base de datos y los convierte a objetos <see cref="Space"/>.
+        /// </summary>
+        /// <returns>Una lista de objetos <see cref="Space"/> con la información de cada espacio. Retorna una lista vacía si ocurre un error.</returns>
         public static List<Space> SelectAllSpaces()
         {
             try

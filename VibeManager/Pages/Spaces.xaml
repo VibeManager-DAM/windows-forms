@@ -47,7 +47,7 @@
 
         <!-- Parte izquierda -->
         <StackPanel Grid.Column="0" Margin="10,0,20,0" VerticalAlignment="Top">
-            <TextBlock Text="Search space"
+            <TextBlock Text="{DynamicResource SearchSpace}"
                        FontSize="20"
                        FontWeight="Bold"
                        Foreground="#39514F"
@@ -82,15 +82,15 @@
                       IsReadOnly="True"
                       Margin="0,0,0,10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*" />
-                    <DataGridTextColumn Header="Capacidad" Binding="{Binding Capacity}" Width="Auto" />
+                    <DataGridTextColumn Header="{DynamicResource Name}" Binding="{Binding Name}" Width="*" />
+                    <DataGridTextColumn Header="{DynamicResource Capacity}" Binding="{Binding Capacity}" Width="Auto" />
                 </DataGrid.Columns>
             </DataGrid>
 
             <!-- Botones de navegación -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                <Button Content="Back" Width="160" Click="PreviousPage" Style="{StaticResource StyledButton}"/>
-                <Button Content="Next" Width="160" Click="NextPage" Style="{StaticResource StyledButton}"/>
+                <Button Content="{DynamicResource Back}" Width="160" Click="PreviousPage" Style="{StaticResource StyledButton}"/>
+                <Button Content="{DynamicResource Next}" Width="160" Click="NextPage" Style="{StaticResource StyledButton}"/>
             </StackPanel>
         </StackPanel>
 

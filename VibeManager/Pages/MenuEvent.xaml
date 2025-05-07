@@ -56,35 +56,35 @@
                   SelectionChanged="EventsDataGrid_SelectionChanged"
                   IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Título" Binding="{Binding Title}" Width="*"/>
-                    <DataGridTextColumn Header="Fecha" Binding="{Binding Date}" Width="100"/>
-                    <DataGridTextColumn Header="Hora" Binding="{Binding Time}" Width="100"/>
+                    <DataGridTextColumn Header="{DynamicResource Title}" Binding="{Binding Title}" Width="*"/>
+                    <DataGridTextColumn Header="{DynamicResource Date}" Binding="{Binding Date}" Width="100"/>
+                    <DataGridTextColumn Header="{DynamicResource Hour}" Binding="{Binding Time}" Width="100"/>
                     <DataGridTextColumn Header="Capacidad" Binding="{Binding Capacity}" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
 
             <!-- Formulario -->
-            <Label Content="Título:" Foreground="#39514F"
+            <Label Content="{DynamicResource Title}" Foreground="#39514F"
                     FontSize="18"
                     FontWeight="Medium"
                     FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
             <TextBox x:Name="TitleTextBox" />
 
-            <Label Content="Descripción:" 
+            <Label Content="{DynamicResource Description}" 
                    Foreground="#39514F"
                     FontSize="18"
                     FontWeight="Medium"
                     FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
             <TextBox x:Name="DescriptionTextBox" Height="60"/>
 
-            <Label Content="Fecha:" 
+            <Label Content="{DynamicResource Date}" 
                    Foreground="#39514F"
                     FontSize="18"
                     FontWeight="Medium"
                     FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
             <DatePicker x:Name="DatePicker" />
 
-            <Label Content="Hora:"
+            <Label Content="{DynamicResource Hour}"
                    Foreground="#39514F"
                     FontSize="18"
                     FontWeight="Medium"
@@ -98,12 +98,12 @@
                 />
 
             <StackPanel Orientation="Horizontal" Margin="0" >
-                <Label Content="Capacidad:"
+                <Label Content="{DynamicResource Capacity}"
                        Foreground="#39514F"
                     FontSize="18"
                     FontWeight="Medium"
                     FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
-                <CheckBox x:Name="SeatsAvailableCheckBox" Content="¿Evento con asientos disponibles?" 
+                <CheckBox x:Name="SeatsAvailableCheckBox" Content="{DynamicResource SeatsAvaliable}" 
                           Checked="SeatsAvailableCheckBox_Checked" 
                           Unchecked="SeatsAvailableCheckBox_Unchecked" Margin="90,8,0,0"
                           Foreground="#39514F"
@@ -115,13 +115,13 @@
             <StackPanel Orientation="Horizontal" Margin="0" >
                 <TextBox x:Name="CapacityTextBox" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0"/>
                 <StackPanel x:Name="SeatsPanel" Orientation="Horizontal" Margin="100,0,0,0" IsEnabled="False">
-                    <Label Content="Filas:"
+                    <Label Content="{DynamicResource Row}"
                            Foreground="#39514F"
                             FontSize="18"
                             FontWeight="Medium"
                             FontFamily="/Fonts/Gabarito.ttf #Gabarito"/>
                     <TextBox x:Name="RowsTextBox" Width="50" Margin="5,0"/>
-                    <Label Content="Columnas:"
+                    <Label Content="{DynamicResource Column}"
                            Foreground="#39514F"
                     FontSize="18"
                     FontWeight="Medium"
@@ -131,7 +131,7 @@
             </StackPanel>
 
             <!-- Seleccionar espacio -->
-            <Label Content="Seleccionar Espacio:"
+            <Label Content="{DynamicResource ChooseSpace}"
                    Foreground="#39514F"
                     FontSize="18"
                     FontWeight="Medium"
@@ -140,9 +140,9 @@
 
             <!-- Botones -->
             <StackPanel Orientation="Horizontal" Margin="0,20" HorizontalAlignment="Center">
-                <Button Content="Guardar" Width="150" Margin="5" Style="{StaticResource StyledButton}" Click="SaveEventButton_Click"/>
-                <Button Content="Eliminar" Width="150" Margin="5" Style="{StaticResource StyledButton}"  Click="DeleteEventButton_Click"/>
-                <Button Content="Limpiar" Width="150" Margin="5" Style="{StaticResource StyledButton}" Click="ClearFieldsButton_Click"/>
+                <Button Content="{DynamicResource Save}" Width="150" Margin="5" Style="{StaticResource StyledButton}" Click="SaveEventButton_Click"/>
+                <Button Content="{DynamicResource Delete}" Width="150" Margin="5" Style="{StaticResource StyledButton}"  Click="DeleteEventButton_Click"/>
+                <Button Content="{DynamicResource Clear}" Width="150" Margin="5" Style="{StaticResource StyledButton}" Click="ClearFieldsButton_Click"/>
             </StackPanel>
         </StackPanel>
 

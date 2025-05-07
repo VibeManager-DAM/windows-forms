@@ -14,6 +14,12 @@
     <sys:String x:Key="Menu">Menú</sys:String>
 
     <sys:String x:Key="Dashboard">Panel</sys:String>
+    <sys:String x:Key="Notifications">Notificaciones</sys:String>
+    <sys:String x:Key="GeneralSummary">Resumen general</sys:String>
+    <sys:String x:Key="TotalUsers">Usuarios registrados:</sys:String>
+    <sys:String x:Key="TotalEvents">Eventos programados:</sys:String>
+    <sys:String x:Key="TotalReserves">Reservas realizadas:</sys:String>
+    <sys:String x:Key="ActivityChart">Gráfico de Actividad</sys:String>
 
     <sys:String x:Key="Users">Usuarios</sys:String>
     <sys:String x:Key="SearchUser">Buscar Usuario</sys:String>
@@ -26,6 +32,8 @@
     <sys:String x:Key="Next">Siguiente</sys:String>
 
     <sys:String x:Key="Spaces">Espacios</sys:String>
+    <sys:String x:Key="SearchSpace">Buscar espacios</sys:String>
+
 
     <sys:String x:Key="Username">Usuario</sys:String>
     <sys:String x:Key="Password">Contraseña</sys:String>
@@ -34,49 +42,16 @@
     <sys:String x:Key="Hour">Hora</sys:String>
     <sys:String x:Key="Event">Evento</sys:String>
 
-    
-    <sys:String x:Key="EventsToday">Eventos de Hoy</sys:String>
-    <sys:String x:Key="TotalSuperAdmins">SuperAdmins</sys:String>
-    <sys:String x:Key="TotalAdmins">Admins</sys:String>
-    <sys:String x:Key="TotalMaintenanceUsers">Mantenimiento</sys:String>
-    <sys:String x:Key="TotalAppUsers">App</sys:String>
-    <sys:String x:Key="TotalArtists">Artistas</sys:String>
-    <sys:String x:Key="TotalSpaces">Espacios</sys:String>
-    <sys:String x:Key="TotalMatches">Emparejamientos</sys:String>
-    <sys:String x:Key="TotalEventsDone">Eventos Hechos</sys:String>
-    <sys:String x:Key="UserRegistrationsperMonth">Registro de Usuarios por Mes</sys:String>
-
-    
-    
-    
-    <sys:String x:Key="Rating">Valoración</sys:String>
-    <sys:String x:Key="Capacity">Capacidad</sys:String>
-    <sys:String x:Key="Genre">Genero</sys:String>
     <sys:String x:Key="Clear">Limpiar</sys:String>
 
-    <!-- FAQ TRANSLATIONS -->
-    <sys:String x:Key="Faq1Question">¿Cómo puedo registrarme como artista?</sys:String>
-    <sys:String x:Key="Faq1Answer">Puedes registrarte en la aplicación seleccionando el rol de 'Artista' y completando tu perfil.</sys:String>
+    <sys:String x:Key="Title">Titulo</sys:String>
+    <sys:String x:Key="Description">Descripción</sys:String>
+    <sys:String x:Key="Date">Fecha</sys:String>
+    <sys:String x:Key="Capacity">Capacidad</sys:String>
+    <sys:String x:Key="SeatsAvaliable">¿Evento con asientos disponibles?</sys:String>
+    <sys:String x:Key="Row">Filas</sys:String>
+    <sys:String x:Key="Column">Columnas</sys:String>
+    <sys:String x:Key="ChooseSpace">Seleccionar espacio</sys:String>
 
-    <sys:String x:Key="Faq2Question">¿Cómo pueden los espacios encontrar artistas?</sys:String>
-    <sys:String x:Key="Faq2Answer">Los espacios pueden buscar artistas según el género musical, la ubicación y la disponibilidad a través de la plataforma.</sys:String>
-
-    <sys:String x:Key="Faq3Question">¿Puedo solicitar participar en varios eventos al mismo tiempo?</sys:String>
-    <sys:String x:Key="Faq3Answer">Sí, puedes solicitar participar en múltiples eventos y los espacios revisarán tu solicitud.</sys:String>
-
-    <sys:String x:Key="Faq4Question">¿Cómo se hacen las coincidencias entre artistas y espacios?</sys:String>
-    <sys:String x:Key="Faq4Answer">El sistema sugiere coincidencias basadas en preferencias, disponibilidad y valoraciones previas.</sys:String>
-
-    <sys:String x:Key="Faq5Question">¿Qué ocurre después de que un artista y un espacio coincidan?</sys:String>
-    <sys:String x:Key="Faq5Answer">Una vez confirmada la coincidencia, se genera un contrato y se definen detalles como el horario y el pago.</sys:String>
-
-    <sys:String x:Key="Faq6Question">¿Puedo valorar un evento o un artista?</sys:String>
-    <sys:String x:Key="Faq6Answer">Sí, tanto los artistas como los espacios pueden dejar valoraciones después de un evento para fomentar la confianza en la plataforma.</sys:String>
-
-    <sys:String x:Key="Faq7Question">¿Cómo puedo informar de un problema o disputa?</sys:String>
-    <sys:String x:Key="Faq7Answer">Puedes informar de un problema a través de la sección ‘Soporte’ de la aplicación, donde un administrador revisará tu caso.</sys:String>
-
-    <sys:String x:Key="Faq8Question">¿Hay alguna forma de comunicarme con los espacios o los artistas?</sys:String>
-    <sys:String x:Key="Faq8Answer">Sí, puedes chatear con espacios o artistas mediante el sistema de mensajería de la aplicación una vez establecida una coincidencia.</sys:String>
 
 </ResourceDictionary>

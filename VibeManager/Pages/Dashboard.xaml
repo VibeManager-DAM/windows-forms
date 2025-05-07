@@ -19,7 +19,7 @@
         <!-- Notificaciones en la esquina superior izquierda -->
         <Border Background="#03201D" Padding="10" CornerRadius="10" Margin="20" Grid.Row="0" Grid.Column="0" Height="200">
             <StackPanel>
-                <TextBlock Text="Notificaciones" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
+                <TextBlock Text="{DynamicResource Notifications}" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
                 <ListBox x:Name="NotificationsList" Background="Transparent" Foreground="White" BorderThickness="0" Height="150">
                     <ListBoxItem Content="Evento próximo: 'Concierto de Música' en 2 días." />
                     <ListBoxItem Content="Nuevo usuario registrado: Juan Pérez" />
@@ -31,20 +31,20 @@
         <!-- Resumen de los usuarios en la esquina superior derecha -->
         <Border Background="#03201D" Padding="10" CornerRadius="10" Margin="20" Grid.Row="0" Grid.Column="2" Height="200">
             <StackPanel>
-                <TextBlock Text="Resumen General" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
+                <TextBlock Text="{DynamicResource GeneralSummary}" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
 
                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                    <TextBlock Text="Usuarios Registrados:" FontSize="16" Foreground="White"/>
+                    <TextBlock Text="{DynamicResource TotalUsers}" FontSize="16" Foreground="White"/>
                     <TextBlock x:Name="TotalUsers" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" Foreground="White"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                    <TextBlock Text="Eventos Programados:" FontSize="16" Foreground="White"/>
+                    <TextBlock Text="{DynamicResource TotalEvents}" FontSize="16" Foreground="White"/>
                     <TextBlock x:Name="TotalEvents" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" Foreground="White"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                    <TextBlock Text="Reservas Realizadas:" FontSize="16" Foreground="White"/>
+                    <TextBlock Text="{DynamicResource TotalReserves}" FontSize="16" Foreground="White"/>
                     <TextBlock x:Name="TotalReservations" Text="0" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" Foreground="White"/>
                 </StackPanel>
             </StackPanel>
@@ -58,7 +58,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Gráfico de Actividad" FontSize="20" FontWeight="Bold" Foreground="Black" Margin="0,0,0,10" Grid.Row="0"/>
+            <TextBlock Text="{DynamicResource ActivityChart}" FontSize="20" FontWeight="Bold" Foreground="Black" Margin="0,0,0,10" Grid.Row="0"/>
 
             <!-- Gráfico de actividad -->
             <Border Background="#03201D" Padding="10" CornerRadius="10" Margin="0,0,0,10" Grid.Row="2">

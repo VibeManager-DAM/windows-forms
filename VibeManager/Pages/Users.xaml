@@ -94,7 +94,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" >
                 <Button Content="{DynamicResource Save}" Width="200" Style="{StaticResource StyledButton}" Click="SaveUser"/>
                 <Button Content="{DynamicResource Delete}" Width="200" Style="{StaticResource StyledButton}" Click="DeleteUser"/>
-                <Button Content="Clear" Width="200" Style="{StaticResource StyledButton}" Click="ClearFields"/>
+                <Button Content="{DynamicResource Clear}" Width="200" Style="{StaticResource StyledButton}" Click="ClearFields"/>
 
             </StackPanel>
         </StackPanel>

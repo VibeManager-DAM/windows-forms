@@ -8,14 +8,24 @@ using VibeManager.Models.Controllers;
 
 namespace VibeManager.Pages
 {
+    /// <summary>
+    /// Representa la página del panel principal del sistema, mostrando estadísticas generales y gráficos.
+    /// </summary>
     public partial class Dashboard : UserControl
     {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Dashboard"/> y carga los datos del panel.
+        /// </summary>
         public Dashboard()
         {
             InitializeComponent();
             LoadDashboardData();
         }
 
+        /// <summary>
+        /// Carga los datos estadísticos del sistema como el total de usuarios, eventos y reservas,
+        /// y los muestra en los controles correspondientes.
+        /// </summary>
         private void LoadDashboardData()
         {
 
@@ -33,6 +43,9 @@ namespace VibeManager.Pages
 
         }
 
+        /// <summary>
+        /// Genera y muestra un gráfico de barras con datos de ejemplo de actividad de reservas y eventos.
+        /// </summary>
         private void LoadActivityChart()
         {
             // Crear el modelo del gráfico

@@ -7,11 +7,22 @@ using System.Threading.Tasks;
 
 namespace VibeManager.Models.Controllers
 {
+
+    /// <summary>
+    /// Clase encargada de proporcionar acceso a la base de datos y manejo centralizado de errores SQL.
+    /// </summary>
     class Orm
     {
+        /// <summary>
+        /// Instancia estática del contexto de base de datos que permite interactuar con las entidades de la aplicación.
+        /// </summary>
         public static VibeEntities db = new VibeEntities();
 
-
+        /// <summary>
+        /// Devuelve un mensaje de error personalizado basado en el número del error de una excepción <see cref="SqlException"/>.
+        /// </summary>
+        /// <param name="sqlException">La excepción SQL capturada.</param>
+        /// <returns>Una cadena que describe el error de manera comprensible para el usuario.</returns>
         public static string ErrorMessage(SqlException sqlException)
         {
             string message = "";

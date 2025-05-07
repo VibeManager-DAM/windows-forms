@@ -13,14 +13,25 @@ using VibeManager.Models.Controllers;
 
 namespace VibeManager.Pages
 {
+    /// <summary>
+    /// Control de usuario que maneja la gestión de eventos y la visualización en el mapa de GMap.
+    /// Permite seleccionar espacios, ver eventos y gestionarlos (agregar, editar, eliminar).
+    /// </summary>
     public partial class MenuEvent : UserControl
     {
-        // Lista de espacios con sus coordenadas y capacidad (simulada)
+        /// <summary>
+        /// Lista de espacios con sus coordenadas y capacidad.
+        /// </summary>
         public List<Space> Spaces { get; set; }
 
-        // Espacio seleccionado actualmente
+        /// <summary>
+        /// Espacio seleccionado actualmente.
+        /// </summary>
         public Space SelectedSpace { get; set; }
 
+        /// <summary>
+        /// Inicializa el control de usuario y configura el mapa GMap y los datos de eventos.
+        /// </summary>
         public MenuEvent()
         {
             InitializeComponent();
@@ -37,6 +48,9 @@ namespace VibeManager.Pages
             LoadSpaces();
         }
 
+        /// <summary>
+        /// Carga los espacios disponibles y sus ubicaciones, agregando marcadores en el mapa y poblando el ComboBox.
+        /// </summary>
         private void LoadSpaces()
         {
             Spaces = SpacesOrm.SelectAllSpaces();
@@ -65,7 +79,12 @@ namespace VibeManager.Pages
             }
         }
 
-        // Evento cuando se selecciona un espacio en el ComboBox
+        /// <summary>
+        /// Evento que se dispara cuando se selecciona un espacio en el ComboBox.
+        /// Centra el mapa en el espacio seleccionado y actualiza la capacidad.
+        /// </summary>
+        /// <param name="sender">El origen del evento (ComboBox).</param>
+        /// <param name="e">El argumento del evento.</param>
         private void SpaceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedSpaceName = (string)SpaceComboBox.SelectedItem;
@@ -84,7 +103,12 @@ namespace VibeManager.Pages
             }
         }
 
-        // Evento para manejar el clic en el mapa (seleccionar un espacio al hacer clic en el mapa)
+        /// <summary>
+        /// Evento para manejar el clic en el mapa y seleccionar un espacio.
+        /// Busca el espacio más cercano al punto de clic.
+        /// </summary>
+        /// <param name="sender">El origen del evento (GMapControl).</param>
+        /// <param name="e">El argumento del evento.</param>
         private void GMapControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var point = e.GetPosition(GMapControl);
@@ -109,6 +133,11 @@ namespace VibeManager.Pages
             }
         }
 
+        /// <summary>
+        /// Busca el espacio más cercano a las coordenadas proporcionadas.
+        /// </summary>
+        /// <param name="clickedPoint">Las coordenadas del punto en el mapa.</param>
+        /// <returns>El espacio más cercano.</returns>
         private Space FindNearestSpace(PointLatLng clickedPoint)
         {
             Space nearestSpace = null;
@@ -128,7 +157,15 @@ namespace VibeManager.Pages
             return nearestSpace;
         }
 
-        // Fórmula de Haversine para calcular la distancia en metros entre dos puntos geográficos
+        /// <summary>
+        /// Calcula la distancia en metros entre dos puntos geográficos utilizando la fórmula de Haversine.
+        /// </summary>
+        /// <param name="lat1">Latitud del primer punto.</param>
+        /// <param name="lon1">Longitud del primer punto.</param>
+        /// <param name="lat2">Latitud del segundo punto.</param>
+        /// <param name="lon2">Longitud del segundo punto.</param>
+        /// <returns>La distancia en metros.</returns>
+
         private double HaversineDistance(double lat1, double lon1, double lat2, double lon2)
         {
             const double R = 6371000; // Radio de la Tierra en metros
@@ -149,13 +186,21 @@ namespace VibeManager.Pages
             return distance;
         }
 
-        // Convierte grados a radianes
+        /// <summary>
+        /// Convierte grados a radianes.
+        /// </summary>
+        /// <param name="degrees">Valor en grados.</param>
+        /// <returns>El valor en radianes.</returns>
         private double ToRadians(double degrees)
         {
             return degrees * Math.PI / 180;
         }
 
-        // Función para actualizar los marcadores en el mapa
+        /// <summary>
+        /// Actualiza los marcadores en el mapa, colocando un marcador rojo para todos los espacios
+        /// y un marcador azul para el espacio seleccionado.
+        /// </summary>
+        /// <param name="selectedSpace">El espacio seleccionado que se mostrará con el marcador azul.</param>
         private void UpdateMarkers(Space selectedSpace)
         {
             // Limpiar solo el marcador azul (seleccionado)
@@ -189,16 +234,31 @@ namespace VibeManager.Pages
             GMapControl.Markers.Add(selectedMarker);
         }
 
+        /// <summary>
+        /// Activa los controles relacionados con la disponibilidad de asientos cuando la casilla está marcada.
+        /// </summary>
+        /// <param name="sender">El origen del evento (CheckBox).</param>
+        /// <param name="e">El argumento del evento.</param>
         private void SeatsAvailableCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             SeatsPanel.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Desactiva los controles relacionados con la disponibilidad de asientos cuando la casilla está desmarcada.
+        /// </summary>
+        /// <param name="sender">El origen del evento (CheckBox).</param>
+        /// <param name="e">El argumento del evento.</param>
         private void SeatsAvailableCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             SeatsPanel.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Guarda el evento en la base de datos, ya sea creando un evento nuevo o actualizando uno existente.
+        /// </summary>
+        /// <param name="sender">El origen del evento (Button).</param>
+        /// <param name="e">El argumento del evento.</param>
         private void SaveEventButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -265,11 +325,20 @@ namespace VibeManager.Pages
             }
         }
 
+        /// <summary>
+        /// Evento que se dispara al hacer clic en el botón para limpiar los campos del formulario.
+        /// Llama al método <see cref="ClearFields"/> para resetear todos los campos.
+        /// </summary>
+        /// <param name="sender">El origen del evento (Button).</param>
+        /// <param name="e">El argumento del evento.</param>
         private void ClearFieldsButton_Click(object sender, RoutedEventArgs e)
         {
             ClearFields();
         }
 
+        /// <summary>
+        /// Limpia todos los campos del formulario, incluyendo los controles de texto, fechas y casillas.
+        /// </summary>
         private void ClearFields()
         {
             TitleTextBox.Clear();
@@ -284,6 +353,12 @@ namespace VibeManager.Pages
             EventsDataGrid.UnselectAll();
         }
 
+        /// <summary>
+        /// Evento que se dispara al hacer clic en el botón para eliminar un evento seleccionado.
+        /// Si el evento está seleccionado, se elimina de la base de datos y se actualiza la vista.
+        /// </summary>
+        /// <param name="sender">El origen del evento (Button).</param>
+        /// <param name="e">El argumento del evento.</param>
         private void DeleteEventButton_Click(object sender, RoutedEventArgs e)
         {
             if (EventsDataGrid.SelectedItem is Event selected)
@@ -302,6 +377,12 @@ namespace VibeManager.Pages
             }
         }
 
+        /// <summary>
+        /// Evento que se dispara cuando se cambia la selección de un evento en el DataGrid.
+        /// Rellena los campos del formulario con los datos del evento seleccionado.
+        /// </summary>
+        /// <param name="sender">El origen del evento (DataGrid).</param>
+        /// <param name="e">El argumento del evento.</param>
         private void EventsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (EventsDataGrid.SelectedItem is Event selectedEvent)
